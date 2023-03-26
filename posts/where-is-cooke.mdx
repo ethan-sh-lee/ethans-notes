@@ -61,7 +61,7 @@ V8엔진은 C++로 작성된 오픈소스 Javascript 엔진입니다. V8을 사�
 Document와 관련된 인터페이스는 Blink에서 [Web IDL](https://www.chromium.org/blink/webidl/) 파일로 미리 정의 하여 V8에게 제공하고 있다.
 
 아래는 Document와 관련된 Web IDL 파일의 내용이다. (필요한 부분만 자름)
-``` idl
+``` webidl
 interface Document 
  ...
 attribute DOMString cookie
@@ -69,7 +69,9 @@ attribute DOMString cookie
 Web IDL 문법으로 cookie 속성을 정의하였다. 이를 통해 javascript에서 new Document();로 객체를 생성할 수 있으며 해당 객체 속성인 cookie에 접근할 수 있다.
 
 ``` javascript
+
 var allCookies = document.cookie;
+
 ```
 
 정리하자면 Blink는 Web IDL 파일을 통해 API를 제공한다. 이를 통해 Blink에서 제공하는 DOM API에 접근할 수 있다. Web IDL 파일에서 정의 된 API는 V8 Engine을 통해 Javascript에서 호출하면 연관된 Blink의 .h 파일을 호출한다. 결과적으로 해당 .h파일의 구현체인 .cc 파일을 실행하게 된다.

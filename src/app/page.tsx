@@ -3,6 +3,8 @@ import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
 
+//메인 화면
+//포스트 카드와 포스트 리스트로 블로그 글을 탐색할 수 있도록 함
 const inter = Inter({ subsets: ["latin"] });
 
 async function getData() {
@@ -19,7 +21,7 @@ function PostCard(post: Post) {
         {format(parseISO(post.date), "LLLL d, yyyy")}
       </time>
       <h2 className="text-lg">
-        <Link className="text-3xl font-bold underline" href={post.url}>
+        <Link className="text-3xl font-bold" href={post.url}>
           {post.title}
         </Link>
       </h2>

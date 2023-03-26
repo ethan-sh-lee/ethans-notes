@@ -1,9 +1,11 @@
 // contentlayer.config.js
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 var Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.md`,
+  contentType: "mdx",
+  filePathPattern: `**/*.mdx`,
   fields: {
     title: {
       type: "string",
@@ -27,11 +29,12 @@ var contentlayer_config_default = makeSource({
   contentDirPath: "posts",
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm]
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypePrism]
   }
 });
 export {
   Post,
   contentlayer_config_default as default
 };
-//# sourceMappingURL=compiled-contentlayer-config-XWUB6LHQ.mjs.map
+//# sourceMappingURL=compiled-contentlayer-config-GJT2X4EN.mjs.map
