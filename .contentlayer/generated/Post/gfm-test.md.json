@@ -1,0 +1,18 @@
+{
+  "title": "gfm test",
+  "date": "2023-03-26T00:00:00.000Z",
+  "body": {
+    "raw": "\n## Autolink literals\n\nwww.example.com, https://example.com, and contact@example.com.\n\n## Footnote\n\nA note[^1]\n\n[^1]: Big note.\n\n## Strikethrough\n\n~one~ or ~~two~~ tildes.\n\n## Table\n\n| a | b  |  c |  d  |\n| - | :- | -: | :-: |\n\n## Tasklist\n\n* [ ] to do\n* [x] done",
+    "html": "<h2>Autolink literals</h2>\n<p>www.example.com, https://example.com, and contact@example.com.</p>\n<h2>Footnote</h2>\n<p>A note[^1]</p>\n<p>[^1]: Big note.</p>\n<h2>Strikethrough</h2>\n<p>~one~ or ~~two~~ tildes.</p>\n<h2>Table</h2>\n<p>| a | b  |  c |  d  |\n| - | :- | -: | :-: |</p>\n<h2>Tasklist</h2>\n<ul>\n<li>[ ] to do</li>\n<li>[x] done</li>\n</ul>"
+  },
+  "_id": "gfm-test.md",
+  "_raw": {
+    "sourceFilePath": "gfm-test.md",
+    "sourceFileName": "gfm-test.md",
+    "sourceFileDir": ".",
+    "contentType": "markdown",
+    "flattenedPath": "gfm-test"
+  },
+  "type": "Post",
+  "url": "/posts/gfm-test"
+}

@@ -1,0 +1,104 @@
+---
+title: 'Chromium의 쿠키 저장 내부 로직 간단 정리'
+date: '2023-03-20'
+---
+
+*내용은 모두 Cromium 엔진과 Cromium을 기반으로한 크롬 브라우저를 기반으로합니다.
+
+## 브라우저가 Cookie를 저장하는 방법
+
+**한줄 요약 : 크롬 브라우저는 sqlite을 통해 쿠키를 저장한다.**
+
+### 1. HTTP Cookie란
+HTTP Cookie는 서버와의 연결 없이 클라이언트의 데이터를 저장하기 위한 데이터 조각입니다.
+
+장바구니부터 사이드바 상태, 테마 상태 등을 저장하는 용도나 http를 통해 서버로 데이터를 함께 전달할 때 사용합니다. 
+
+javascript로 개발할 때 Document 인터페이스의 cookie 속성을 통해 값을 생성, 수정, 가져오기를 할 수 있습니다.
+
+```javascript
+allCookies = document.cookie;
+```
+
+이러한 데이터는 실제로 크롬 브라우저에 내장된 sqlite에 저장된다. 따라서 저장된 파일을 sqlite 뷰어로 확인해 볼 수 있다.
+
+### 2. Finder로 쿠키 파일 찾기
+환경
+- 크롬 버전 : 105.0.5195.125 (Official Build) (arm64)
+- macOS
+
+쿠키는 아래와 같은 경로에 sqlite 포맷의 파일로 저장되어 있다.
+
+/Users/유저이름/Library/Application Support/Google/Chrome/Default/Cookies
+
+### 3. Sqlite 뷰어로 확인하기
+Cookies 파일을 [Online SQLite Viewer](https://inloop.github.io/sqlite-viewer/)에 업로드하면 해당 파일의 정보를 볼 수 있다.
+
+sql 문법으로 데이터를 조작할 수 있다.
+ 
+## 세부 구현 자세히 보기
+여기부터는 어떠한 내부 과정으로 sqlite에 저장되는지 내부 코드를 살펴본다.
+
+### 1. 세부 과정을 설명하기 전 Cromium의 구조
+Cromium은 크롬 브라우저의 기반이 되는 오픈소스 웹 브라우저 프로젝트이다.
+
+크게 브라우저와 렌더러로 구성되어 있으며 브라우저는 주요 프로세스이며 모든 UI와 I/O를 담당하며 렌더러는 탭과 같은 하위 프로세스이다.
+
+Chromium은 렌더링을 수행하기 위해 Blink를 포함한다.
+
+#### 1-1. Blink
+Blink는 브라우저 탭 내에서 컨텐츠를 렌더링하기 위한 모든 것을 수행합니다.
+
+(예를 들어 HTML, CSS, JS, DOM trees, layout 계산, 그래픽 등)
+
+Blink는 V8엔진을 포함하며 C++로 작성되었습니다.
+
+#### 1-2. V8 Engine
+V8엔진은 C++로 작성된 오픈소스 Javascript 엔진입니다. V8을 사용하면 모든 C++ 응용 프로그램의 자체 기능을 Javascript 코드에 노출할 수 있습니다.
+
+### 2. 세부 로직 살펴보기
+#### 2.1 Javascript에서 Blink API 호출하기
+Document와 관련된 인터페이스는 Blink에서 [Web IDL](https://www.chromium.org/blink/webidl/) 파일로 미리 정의 하여 V8에게 제공하고 있다.
+
+아래는 Document와 관련된 Web IDL 파일의 내용이다. (필요한 부분만 자름)
+``` idl
+interface Document 
+ ...
+attribute DOMString cookie
+```
+Web IDL 문법으로 cookie 속성을 정의하였다. 이를 통해 javascript에서 new Document();로 객체를 생성할 수 있으며 해당 객체 속성인 cookie에 접근할 수 있다.
+
+``` javascript
+var allCookies = document.cookie;
+```
+
+정리하자면 Blink는 Web IDL 파일을 통해 API를 제공한다. 이를 통해 Blink에서 제공하는 DOM API에 접근할 수 있다. Web IDL 파일에서 정의 된 API는 V8 Engine을 통해 Javascript에서 호출하면 연관된 Blink의 .h 파일을 호출한다. 결과적으로 해당 .h파일의 구현체인 .cc 파일을 실행하게 된다.
+
+이러한 파일들은 크로미움 저장소에 third_party/blink/renderer/core/dom에서 확인할 수 있다.
+
+#### 2.2 Cookie 저장 클래스
+위에서 javascript코드가 어떻게 Blink의 C++ 코드를 사용할 수 있는지 알아보았다.
+
+웹브라우저에서 Cookie는 document.cookie 이외에 HTTP 통신에서의 Cookie 설정과 Cookie Store api와 같이 다양한 방법이 있다. 아래는 HTTP 통신에 대한 로직이지만 다른 방법 또한 CookieStore를 사용한다.
+
+1. 헤더에 Set-Cookie가 포함된 HTTP 응답이 수신됨
+2. URLRequestHttpJob에 의해 Set-Cookie가 처리 됨
+3. CanonicalCookie를 통해 분석되고 저장을 위해 CookieStore로 전달됨
+4. CookieStore는 CookieMonster::PersistentCookieStore 인터페이스를 통해 on-disk에 저장할 수 있다.
+
+CookieMonster::PersistentCookieStore의 구현체인 [SQLitePersistentCookieStore](https://source.chromium.org/chromium/chromium/src/+/main:net/extras/sqlite/sqlite_persistent_cookie_store.cc)의 코드를 살펴보면 sqlite에 사용되는 여러가지 sql문을 확인할 수 있다. 
+
+출처
+- [크로미움 구조 개요](https://www.chromium.org/developers/how-tos/getting-around-the-chrome-source-code/)
+- [MDN Document 객체](https://developer.mozilla.org/ko/docs/Web/API/Document)
+- [Blink How It Works](https://docs.google.com/document/d/1aitSOucL0VHZa9Z2vbRJSyAIsAz24kX8LFByQ5xQnUg)
+- [Blink Web IDL](https://www.chromium.org/blink/webidl/)
+- [Document Web IDL 파일](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/core/dom/document.idl)
+- [Document 구현체](https://chromium.googlesource.com/chromium/src/+/main/third_party/blink/renderer/core/dom/document.cc)
+- [V8 Engine 공식문서](https://v8.dev/docs)
+- [저장소 Cookies 디렉토리](https://chromium.googlesource.com/chromium/src/+/HEAD/net/cookies/README.md)
+- [Cookie monster란](https://www.chromium.org/developers/design-documents/network-stack/cookiemonster/)
+- [SQLitePersistentCookieStore 구현 코드](https://source.chromium.org/chromium/chromium/src/+/main:net/extras/sqlite/sqlite_persistent_cookie_store.cc)
+
+
+
