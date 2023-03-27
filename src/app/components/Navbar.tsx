@@ -3,7 +3,7 @@ import ThemeSwitch from "./ThemeSwitch";
 
 const menus = [
   { title: "Programming", href: "/programming" },
-  { title: "Algorithm Logs", href: "/algo-log" },
+  { title: "Daily log", href: "/daily-log" },
   { title: "Books", href: "/books" },
   { title: "Notes", href: "/notes" },
   { title: "About", href: "/about" },
