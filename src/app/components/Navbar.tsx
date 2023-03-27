@@ -12,7 +12,9 @@ const menus = [
 export default function Navbar() {
   return (
     <div className="py-10 inline-flex">
-      <h1 className="pl-4 pr-4 text-3xl font-bold ">Ethan&#39;s Notes</h1>
+      <h1 className="pl-4 pr-4 text-3xl font-bold ">
+        <Link href={"/"}>Ethan&#39;s Notes</Link>
+      </h1>
       <header className="flex justify-center items-center">
         {menus.map((link) => (
           <Link

@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 const font = Nanum_Gothic_Coding({
-  weight: "700",
+  weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
 });

@@ -6,10 +6,10 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
 import Comments from "@/app/components/Comments";
+
 //posts/ 경로에서 mdx 파일을 가져온다
 //현재 경로와 맞는 컨텐츠를 MDXComponenet로 뿌려주며 remark, rehype 플러그인이 적용된다
 //remark-gfm을 통해 github식 markdown을 표현해준다.
-//
 
 type PageProps = {
   params: {

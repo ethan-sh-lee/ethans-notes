@@ -8,6 +8,25 @@ export { isType } from 'contentlayer/client'
 export type { Markdown, MDX, ImageFieldData, IsoDateTimeString }
 
 /** Document types */
+export type DailyLog = {
+  /** File path relative to `contentDirPath` */
+  _id: string
+  _raw: Local.RawDocumentData
+  type: 'DailyLog'
+  /** The title of the problem */
+  title: string
+  /** The link of the problem */
+  link: string
+  /** The date of the daily log */
+  date: IsoDateTimeString
+  /** failure or success */
+  isOk?: boolean | undefined
+  platform?: '프로그래머스' | '백준' | undefined
+  /** MDX file body */
+  body: MDX
+  url: string
+}
+
 export type Post = {
   /** File path relative to `contentDirPath` */
   _id: string
@@ -30,8 +49,8 @@ export type Post = {
 export type AllTypes = DocumentTypes | NestedTypes
 export type AllTypeNames = DocumentTypeNames | NestedTypeNames
 
-export type DocumentTypes = Post
-export type DocumentTypeNames = 'Post'
+export type DocumentTypes = DailyLog | Post
+export type DocumentTypeNames = 'DailyLog' | 'Post'
 
 export type NestedTypes = never
 export type NestedTypeNames = never
@@ -52,6 +71,7 @@ declare global {
 }
 
 export type DocumentTypeMap = {
+  DailyLog: DailyLog
   Post: Post
 }
 
