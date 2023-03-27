@@ -4,8 +4,9 @@
 
 - NextJs 13 + app dir
 - [Contentlayer](https://www.contentlayer.dev/blog/working-with-content-is-hard-for-developers)
-- remarkGfm for [github flavored markdown](https://github.github.com/gfm/)
-- rehype-prism-plus for highlight code blocks
-- tailwindcss for CSS
-- giscus for comments system
+- RemarkGfm for [github flavored markdown](https://github.github.com/gfm/)
+- Rehype-prism-plus for highlight code blocks
+- Tailwindcss for CSS
+- Giscus for comments system
+- Dark Theme with next/themes, tailwindcss
   
