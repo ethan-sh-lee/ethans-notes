@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^2.2.8",
     "@types/node": "18.15.9",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
     "contentlayer": "^0.3.0",
     "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
