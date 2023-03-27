@@ -10,6 +10,7 @@
 - Tailwindcss for CSS
 - Giscus for comments system
 - Light and Dark Theme with next/themes, tailwindcss
+- Deploy via Vercel
 
 ## Roadmap
 
