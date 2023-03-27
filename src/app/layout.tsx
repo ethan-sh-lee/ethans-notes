@@ -1,4 +1,6 @@
 import "../styles/globals.css";
+import Navbar from "./components/Navbar";
+import Provider from "./components/ProviderDarkTheme";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,8 +13,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body>{children}</body>
+    <html lang="ko" suppressHydrationWarning>
+      <body>
+        <Provider>
+          <Navbar />
+          {children}
+        </Provider>
+      </body>
     </html>
   );
 }
