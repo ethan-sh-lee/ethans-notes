@@ -1,5 +1,6 @@
 import { DailyLog } from ".contentlayer/generated";
 import { format, parseISO } from "date-fns";
+import Link from "next/link";
 
 export default function DailyLogCard(log: DailyLog) {
   return (
@@ -16,9 +17,14 @@ export default function DailyLogCard(log: DailyLog) {
       <div className="w-11/12">
         <div className="flex items-baseline">
           <p>
-            <a className="text-sm font-bold" href={log.link}>
+            <Link
+              rel="noopener noreferrer"
+              target="_blank"
+              className="text-sm font-bold"
+              href={log.link}
+            >
               {log.title}
-            </a>
+            </Link>
           </p>
           <p className="text-sm pl-1">{"문제를 해결하는데"}</p>
           {log.isOk ? (
