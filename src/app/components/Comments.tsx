@@ -6,7 +6,7 @@ export default function Comments() {
   return (
     <Giscus
       id="comments"
-      repo="sunho-lee/techblog"
+      repo={`${process.env.GISCUS_REPO_USERNAME} + "/" + ${process.env.GISCUS_REPO_NAME}`}
       repoId={process.env.GISCUS_REPO_ID ?? ""}
       category="Announcements"
       categoryId={process.env.GISCUS_CATEGORY_ID}
