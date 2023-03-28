@@ -6,10 +6,10 @@ export default function Comments() {
   return (
     <Giscus
       id="comments"
-      repo={`${process.env.GISCUS_REPO_USERNAME} + "/" + ${process.env.GISCUS_REPO_NAME}`}
-      repoId={process.env.GISCUS_REPO_ID ?? ""}
+      repo={`${process.env.NEXT_PUBLIC_GISCUS_REPO_USERNAME} + "/" + ${process.env.NEXT_PUBLIC_GISCUS_REPO_NAME}`}
+      repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID ?? ""}
       category="Announcements"
-      categoryId={process.env.GISCUS_CATEGORY_ID}
+      categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}
       mapping="pathname"
       reactionsEnabled="1"
       emitMetadata="0"
