@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className={font.className} suppressHydrationWarning>
-      <body>
+      <body className="px-3 pt-2">
         <Provider>
           <Navbar />
           {children}

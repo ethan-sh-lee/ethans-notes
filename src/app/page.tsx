@@ -15,7 +15,7 @@ async function getData() {
 export default async function Home() {
   const posts = await getData();
   return (
-    <div className="mx-auto max-w-2xl pb-16 text-center">
+    <div className="text-center">
       <title>Ethan&#39;s Notes</title>
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
