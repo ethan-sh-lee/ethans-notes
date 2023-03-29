@@ -40,7 +40,7 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
-      <div className="ml-auto lg:ml-0 lg:order-3">
+      <div className="ml-auto lg:ml-0 lg:order-3 pt-2">
         <ThemeSwitch />
       </div>
       <div className="lg:hidden">
