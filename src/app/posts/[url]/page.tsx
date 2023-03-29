@@ -35,18 +35,16 @@ const PostLayout = ({ params }: PageProps) => {
   const MDXContent = useMDXComponent(post?.body?.code);
   //container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8
   return (
-    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
+    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose">
       <title>{post.title}</title>
       <article>
-        <div>
-          <Link href="/">Home</Link>
-        </div>
         <div>
           <h1 className="text-3xl font-bold">{post.title}</h1>
           <time dateTime={post.date}>
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
         </div>
+
         <MDXContent />
         <div className="pt-8" />
         <Comments />
