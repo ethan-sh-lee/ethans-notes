@@ -25,9 +25,7 @@ export default function Navbar() {
       </Link>
       <div
         className={`${
-          !isOpenMenu
-            ? "h-0 opacity-0 lg:h-auto lg:opacity-100"
-            : "h-auto opacity-100 animate-fade-in-down"
+          !isOpenMenu ? "hidden" : "block animate-fade-in-down"
         }  ${"pb-4 lg:pb-0 lg:flex justify-between items-center w-full lg:w-auto order-2"}`}
       >
         <div
