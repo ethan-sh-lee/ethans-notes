@@ -7,7 +7,8 @@
 - [Contentlayer](https://www.contentlayer.dev/blog/working-with-content-is-hard-for-developers)
 - RemarkGfm for [github flavored markdown](https://github.github.com/gfm/)
 - Rehype-prism-plus for highlight code blocks
-- Tailwindcss for CSS
+- Rehype slug, autolink headings
+- Tailwindcss for CSS, Markdown Typography
 - Giscus for comments system
 - Light and Dark Theme with next/themes, tailwindcss
 - Deploy via Vercel
@@ -15,10 +16,9 @@
 
 ## Roadmap
 
+- TOC, Reading Time
 - Programming 페이지
-- Page CSS 적용
 - Books 페이지
 - Notes 페이지
-- About 페이지
 - Google anayltic
 - Page view with PlanetScale
