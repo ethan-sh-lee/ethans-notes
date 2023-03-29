@@ -16,7 +16,7 @@ export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <div className="pb-2 flex items-center justify-between flex-wrap dark:bg-black dark:text-slate-200">
+    <div className="mb-2 flex items-center justify-between flex-wrap dark:bg-black dark:text-slate-200">
       <Link
         className="text-base font-bold transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
         href={"/"}
@@ -25,10 +25,15 @@ export default function Navbar() {
       </Link>
       <div
         className={`${
-          !isOpenMenu ? "hidden" : ""
-        }  ${"lg:flex justify-between items-center w-full lg:w-auto order-2"}`}
+          !isOpenMenu
+            ? "h-0 opacity-0 lg:h-auto lg:opacity-100"
+            : "h-auto opacity-100 animate-fade-in-down"
+        }  ${"pb-4 lg:pb-0 lg:flex justify-between items-center w-full lg:w-auto order-2"}`}
       >
-        <ul className="lg:ml-8 flex-col lg:flex-row flex lg:space-x-8 mt-4 lg:mt-0 lg:text-sm lg:font-medium">
+        <div
+          className="lg:ml-8 flex-col lg:flex-row flex lg:space-x-8 mt-0 lg:text-sm lg:font-medium
+        "
+        >
           {menus.map((menu, index) => (
             <Link
               key={index}
@@ -38,7 +43,7 @@ export default function Navbar() {
               {menu.title}
             </Link>
           ))}
-        </ul>
+        </div>
       </div>
       <div className="ml-auto lg:order-3 pt-2 ">
         <ThemeSwitch />
