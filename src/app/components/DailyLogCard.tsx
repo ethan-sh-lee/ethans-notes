@@ -1,6 +1,9 @@
 import { DailyLog } from ".contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Link from "next/link";
+import TagPlatform from "./TagPlatform";
+import TagLevel from "./TagLevel";
+import TagLang from "./TagLang";
 
 export default function DailyLogCard(log: DailyLog) {
   return (
@@ -15,17 +18,19 @@ export default function DailyLogCard(log: DailyLog) {
         ></div>
       </div>
       <div className="w-11/12">
-        <div className="flex items-baseline">
-          <p>
-            <Link
-              rel="noopener noreferrer"
-              target="_blank"
-              className="text-sm font-bold"
-              href={log.link}
-            >
-              {log.title}
-            </Link>
-          </p>
+        <p className="text-xs text-gray-500 pl-1">
+          {format(parseISO(log.date), "LLLL d, yyyy")}
+        </p>
+        <div className="flex items-baseline flex-row flex-wrap">
+          <Link
+            rel="noopener noreferrer"
+            target="_blank"
+            className="pl-1 text-sm font-bold"
+            href={log.link}
+          >
+            {log.title}
+          </Link>
+
           <p className="text-sm pl-1">{"문제를 해결하는데"}</p>
           {log.isOk ? (
             <p className="text-sm font-bold pl-1 text-blue-600">{"성공"}</p>
@@ -35,11 +40,10 @@ export default function DailyLogCard(log: DailyLog) {
 
           <p className="text-sm pl-1">{"하였습니다."}</p>
         </div>
-        <div>
-          <p className="text-xs text-gray-500">
-            {format(parseISO(log.date), "LLLL d, yyyy")}
-          </p>
-          <p className="text-xs"> from {log.platform}</p>
+        <div className="pl-1">
+          <TagPlatform value={log.platform} />
+          <TagLevel value={log.level} />
+          <TagLang value={log.lang} />
         </div>
       </div>
     </div>

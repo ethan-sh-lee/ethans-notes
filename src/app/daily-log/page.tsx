@@ -16,13 +16,13 @@ export default async function Home() {
   const logs = await getData();
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="flex-1 bg-stone-50 dark:bg-gray-900 rounded-lg shadow-xl mt-4 p-8">
+      <div className="flex-1 bg-stone-50 dark:bg-gray-900 rounded-lg shadow-xl mt-4 p-2 md:p-4">
         <h4 className="text-xl text-gray-900 dark:text-white font-bold">
           Daily logs
         </h4>
         <h6>매일매일 알고리즘 문제를 풀고 있습니다.</h6>
         <h6>더 나은 문제해결 능력을 위해 꾸준히 진행 중입니다.</h6>
-        <div className="relative px-4">
+        <div className="relative px-2 md:px-4">
           <div className="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
           {logs.map((log, idx) => (
             <DailyLogCard key={idx} {...log} />
