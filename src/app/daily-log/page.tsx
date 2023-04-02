@@ -16,7 +16,7 @@ export default async function Home() {
   const logs = await getData();
   return (
     <div className="mx-auto max-w-4xl">
-      <div className="flex-1 bg-stone-50 dark:bg-gray-900 rounded-lg shadow-xl mt-4 p-2 md:p-4">
+      <div className="flex-1 bg-stone-50 dark:bg-gray-900 rounded-lg shadow-xl my-4 p-2 md:p-4">
         <h4 className="text-xl text-gray-900 dark:text-white font-bold">
           Daily logs
         </h4>
