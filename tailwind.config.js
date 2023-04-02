@@ -23,6 +23,11 @@ module.exports = {
       animation: {
         "fade-in-down": "fade-in-down 0.5s ease-out",
       },
+      colors: {
+        programmers: {
+          "lv.0": "#4387F7",
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
