@@ -31,8 +31,8 @@ export const Post = defineDocumentType(() => ({
 //title, link, platform, level, date, isOk lang
 export const DailyLog = defineDocumentType(() => ({
   name: "DailyLog",
-  contentType: "mdx",
-  filePathPattern: `dailylogs/**/*.mdx`,
+  contentType: "md",
+  filePathPattern: `dailylogs/**/*.md`,
   fields: {
     title: {
       type: "string",
