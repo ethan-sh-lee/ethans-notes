@@ -1,5 +1,7 @@
 import { DailyLog } from "contentlayer/generated";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+import silver1 from "../../../public/image/silver1.svg";
 
 const inter = Inter({
   weight: ["700"],
@@ -18,6 +20,16 @@ export default function Tag({ value }: { value: DailyLog["level"] }) {
       >
         Lv. 0
       </span>
+    );
+  } else if (value == "Silver1") {
+    return (
+      <Image
+        className="mx-2"
+        src={silver1}
+        alt="Logo of the silver1"
+        width={20}
+        height={20}
+      />
     );
   }
 
