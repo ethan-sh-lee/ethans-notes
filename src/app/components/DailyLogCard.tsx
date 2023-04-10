@@ -40,6 +40,11 @@ export default function DailyLogCard(log: DailyLog) {
 
           <p className="text-sm">{"하였습니다."}</p>
         </div>
+        {(
+          <p className="text-xs pl-1 text-gray-500 dark:pb-1">
+            {log.description}
+          </p>
+        ) ?? null}
         <div className="flex items-center gap-1">
           <TagPlatform value={log.platform} />
           <TagLevel value={log.level} />

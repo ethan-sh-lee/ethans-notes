@@ -44,6 +44,11 @@ export const DailyLog = defineDocumentType(() => ({
       description: "The link of the problem",
       required: true,
     },
+    description: {
+      type: "string",
+      description: "",
+      required: false,
+    },
     platform: {
       type: "enum",
       options: ["프로그래머스", "백준", "codewars", "leetcode", "reetcode"],
@@ -109,6 +114,7 @@ export const DailyLog = defineDocumentType(() => ({
     isOk: {
       type: "boolean",
       description: "failure or success",
+      required: true,
     },
     lang: {
       type: "enum",
