@@ -1,6 +1,6 @@
 import { DailyLog } from "contentlayer/generated";
-import ProgrammersLogo from "./ProgrammersLogo";
-import BaekjoonLogo from "./BaekjoonLogo";
+import ProgrammersLogo from "./logo/ProgrammersLogo";
+import BaekjoonLogo from "./logo/BaekjoonLogo";
 
 export default function TagPlatform({
   value,

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/nav/Navbar";
 import Provider from "./components/ProviderDarkTheme";
 import { Nanum_Gothic_Coding } from "next/font/google";
 

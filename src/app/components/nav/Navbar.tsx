@@ -4,13 +4,7 @@ import Link from "next/link";
 import ThemeSwitch from "./ThemeSwitch";
 import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
-
-const menus = [
-  { title: "Programming", href: "/programming" },
-  { title: "Daily log", href: "/daily-log" },
-  { title: "Books", href: "/books" },
-  { title: "Notes", href: "/notes" },
-];
+import { menus } from "@/const/menu";
 
 export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);

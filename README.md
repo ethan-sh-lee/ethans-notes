@@ -17,8 +17,7 @@
 ## Roadmap
 
 - TOC, Reading Time
-- Programming 페이지
-- Books 페이지
 - Notes 페이지
-- Google anayltic
+- Reviews 페이지
+- Google analytics
 - Page view with PlanetScale

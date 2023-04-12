@@ -3,8 +3,6 @@
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import React from "react";
-import darkLogo from "../../../public/image/programmers-logo-dark.png";
-import lightLogo from "../../../public/image/programmers-logo-light.png";
 import Image from "next/image";
 
 const ProgrammersLogo = () => {
@@ -17,17 +15,17 @@ const ProgrammersLogo = () => {
     <>
       {mounted && (theme === "dark" || resolvedTheme === "dark") ? (
         <Image
-          src={lightLogo}
+          src="/image/programmers-logo-light.png"
           alt="Logo of the Programmers"
-          width={150}
-          height={150}
+          width="150"
+          height="150"
         />
       ) : (
         <Image
-          src={darkLogo}
+          src="/image/programmers-logo-dark.png"
           alt="Logo of the Programmers"
-          width={150}
-          height={150}
+          width="150"
+          height="150"
         />
       )}
     </>
