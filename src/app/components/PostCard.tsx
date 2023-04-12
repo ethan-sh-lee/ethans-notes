@@ -9,7 +9,7 @@ export default function PostCard(post: Post) {
         {format(parseISO(post.date), "LLLL d, yyyy")}
       </time>
       <h2 className="text-lg">
-        <Link className="text-3xl font-bold" href={post.url}>
+        <Link className="text-3xl font-bold" href={post.url.replace("/posts", "")}>
           {post.title}
         </Link>
       </h2>
