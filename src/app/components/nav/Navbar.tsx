@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <div className="mb-2 flex items-center justify-between flex-wrap dark:bg-black dark:text-slate-200">
+    <div className="mb-2 flex items-center justify-between flex-wrap">
       <Link
         className="text-base font-bold transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
         href={"/"}
@@ -29,7 +29,7 @@ export default function Navbar() {
             <Link
               key={index}
               href={menu.href}
-              className="text-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 hover:bg-gray-200 border-b border-gray-200 lg:hover:bg-transparent lg:border-0 block pr-4 py-2 lg:p-0"
+              className="text-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-200 border-b border-gray-200 lg:hover:bg-transparent lg:border-0 block pr-4 py-2 lg:p-0"
             >
               {menu.title}
             </Link>

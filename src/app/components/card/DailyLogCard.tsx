@@ -31,17 +31,17 @@ export default function DailyLogCard(log: DailyLog) {
             {log.title}
           </Link>
 
-          <p className="text-sm pl-1">{"문제를 해결하는데"}</p>
+          <p className="text-sm pl-1 text-gray-500 dark:text-gray-400">{"문제를 해결하는데"}</p>
           {log.isOk ? (
             <p className="text-sm font-bold pl-1 text-blue-600">{"성공"}</p>
           ) : (
             <p className="text-sm font-bold pl-1 text-red-600">{"실패"}</p>
           )}
 
-          <p className="text-sm">{"하였습니다."}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{"하였습니다."}</p>
         </div>
         {(
-          <p className="text-xs pl-1 text-gray-500 dark:pb-1">
+          <p className="text-xs pl-1 text-gray-500 dark:text-gray-400 dark:pb-1">
             {log.description}
           </p>
         ) ?? null}

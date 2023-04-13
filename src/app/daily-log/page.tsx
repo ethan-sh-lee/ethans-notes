@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <PageLayout>
       <PageHeading head="데일리로그" summary="더 나은 문제해결 능력을 위해 알고리즘 문제를 풀고 있습니다." />
-      <div className="flex-1 bg-neutral-50-50 dark:bg-gray-900 rounded-lg shadow-xl my-4 p-2 md:p-4">
+      <div className="flex-1 bg-white dark:bg-gray-800 rounded-lg shadow-2xl my-4 p-2 md:p-4">
         <div className="relative px-2 md:px-4">
           <div className="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
           {logs.map((log, idx) => (
