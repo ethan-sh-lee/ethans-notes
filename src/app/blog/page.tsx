@@ -2,6 +2,7 @@ import { allPosts } from "contentlayer/generated";
 import PostCard from "../components/card/PostCard";
 import { compareDesc } from "date-fns";
 import { PageHeading } from "../components/typo/PageHeading";
+import { PageLayout } from "../components/layout/PageLayout";
 
 async function getData() {
   const posts = allPosts
@@ -16,11 +17,11 @@ async function getData() {
 export default async function Misc() {
   const posts = await getData();
   return (
-    <div className="pt-4 mx-auto max-w-4xl">
+    <PageLayout>
       <PageHeading head="블로그" summary="개발, 기술, 스타트업, 기업문화, 제품에 대한 나의 생각을 포스팅합니다." />
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}
-    </div>
+    </PageLayout>
   );
 }

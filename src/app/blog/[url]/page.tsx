@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
-import { SimpleLayout } from "@/app/components/layout/SimpleLayout";
+import { SimpleLayout } from "@/app/components/layout/SimplePostLayout";
 
 type PageProps = {
     params: {
