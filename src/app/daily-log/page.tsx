@@ -1,6 +1,7 @@
 import { compareDesc } from "date-fns";
 import { DailyLog, allDailyLogs } from "contentlayer/generated";
-import DailyLogCard from "../components/DailyLogCard";
+import DailyLogCard from "../components/card/DailyLogCard";
+import { PageHeading } from "../components/typo/PageHeading";
 
 //메인 화면
 //포스트 카드와 포스트 리스트로 블로그 글을 탐색할 수 있도록 함
@@ -16,8 +17,7 @@ export default async function Home() {
   const logs = await getData();
   return (
     <div className="mx-auto max-w-4xl">
-      <h2 className="text-4xl font-extrabold dark:text-white">데일리로그</h2>
-      <p className="my-4 text-lg text-gray-500">더 나은 문제해결 능력을 위해 알고리즘 문제를 풀고 있습니다.</p>
+      <PageHeading head="데일리로그" summary="더 나은 문제해결 능력을 위해 알고리즘 문제를 풀고 있습니다." />
       <div className="flex-1 bg-neutral-50-50 dark:bg-gray-900 rounded-lg shadow-xl my-4 p-2 md:p-4">
         <div className="relative px-2 md:px-4">
           <div className="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>

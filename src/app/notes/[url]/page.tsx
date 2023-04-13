@@ -17,15 +17,13 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 const PostLayout = ({ params }: PageProps) => {
     const post = allPosts.find(
         ({ url }) => {
-            return url.replaceAll("/posts/blog/", "") == params.url
+            return url.replaceAll("/posts/notes/", "") == params.url
         }
     );
 
     if (!post) {
         notFound();
     }
-
-
     return <SimpleLayout post={post} />;
 };
 

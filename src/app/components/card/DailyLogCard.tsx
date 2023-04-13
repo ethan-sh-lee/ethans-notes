@@ -1,9 +1,9 @@
 import { DailyLog } from ".contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Link from "next/link";
-import TagPlatform from "./tag/TagPlatform";
-import TagLevel from "./tag/TagLevel";
-import TagLang from "./tag/TagLang";
+import TagPlatform from "../tag/TagPlatform";
+import TagLevel from "../tag/TagLevel";
+import TagLang from "../tag/TagLang";
 
 export default function DailyLogCard(log: DailyLog) {
   return (
