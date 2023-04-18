@@ -1,6 +1,5 @@
 import { defineDocumentType, defineNestedType } from "contentlayer/source-files";
 
-//title, link, platform, level, date, isOk lang
 export const Problems = defineDocumentType(() => ({
   name: "Problem",
   filePathPattern: `problems/**/*.md`,
@@ -69,13 +68,11 @@ const Log = defineNestedType(() => ({
         "java",
         "cpp",
         "rust",
-        "go",
         "javascript",
-        "typescript",
         "haskell",
-        "c",
         "python",
         "kotlin",
+        "elixir",
         "sql",
       ]
     },
