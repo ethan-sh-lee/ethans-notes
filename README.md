@@ -12,7 +12,7 @@
 - Giscus for comments system
 - Light and Dark Theme with next/themes, tailwindcss
 - Deploy via Vercel
-- Daily Log for Daily Problem Solving Challenge
+- Problem for algorithms
 
 ## Roadmap
 
