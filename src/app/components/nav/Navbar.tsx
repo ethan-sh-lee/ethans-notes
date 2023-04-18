@@ -29,6 +29,7 @@ export default function Navbar() {
             <Link
               key={index}
               href={menu.href}
+              onClick={() => { setIsOpenMenu(!isOpenMenu) }}
               className="text-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-200 border-b border-gray-200 lg:hover:bg-transparent lg:border-0 block pr-4 py-2 lg:p-0"
             >
               {menu.title}
