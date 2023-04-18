@@ -4,11 +4,11 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { Post } from "./src/type/Post";
-import { DailyLog } from "./src/type/DailyLog";
+import { Problems } from "./src/type/Problem";
 
 export default makeSource({
   contentDirPath: "contents",
-  documentTypes: [Post, DailyLog],
+  documentTypes: [Post, Problems],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrism],
