@@ -3,6 +3,7 @@ import { PageLayout } from "../components/layout/PageLayout";
 import { PageHeading } from "../components/typo/PageHeading";
 import { CategoryCard } from "../components/card/CategoryCard";
 import { MasonryLaout } from "../components/layout/MasonryLayout";
+import Link from "next/link";
 
 export default async function Programming() {
   return (
@@ -11,7 +12,12 @@ export default async function Programming() {
       <div className="mt-4" />
       <MasonryLaout>
         {noteCategories.map((category, index) => (
-          <CategoryCard key={index} cate={category} />
+          <Link
+            href={category.href}
+            key={index}
+          >
+            <CategoryCard cate={category} />
+          </Link>
         ))}
       </MasonryLaout>
     </PageLayout>

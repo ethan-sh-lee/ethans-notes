@@ -14,8 +14,8 @@ export const SimpleLayout = ({ post }: { post: Post }) => {
             <article>
                 <div>
                     <h1 className="text-3xl font-bold">{post.title}</h1>
-                    <time dateTime={post.date}>
-                        {format(parseISO(post.date), "LLLL d, yyyy")}
+                    <time dateTime={post.publishedAt}>
+                        {format(parseISO(post.publishedAt), "LLLL d, yyyy")}
                     </time>
                 </div>
 

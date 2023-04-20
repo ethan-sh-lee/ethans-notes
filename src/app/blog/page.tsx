@@ -1,8 +1,8 @@
 import { allPosts } from "contentlayer/generated";
-import PostCard from "../components/card/PostCard";
+import PostCard from "@/app/components/card/PostCard";
 import { compareDesc } from "date-fns";
-import { PageHeading } from "../components/typo/PageHeading";
-import { PageLayout } from "../components/layout/PageLayout";
+import { PageHeading } from "@/app/components/typo/PageHeading";
+import { PageLayout } from "@/app/components/layout/PageLayout";
 
 async function getData() {
   const posts = allPosts
@@ -10,11 +10,11 @@ async function getData() {
       return post._raw.sourceFileDir == "posts/blog";
     })
     .sort((a, b) => {
-      return compareDesc(new Date(a.date), new Date(b.date));
+      return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
     });
   return posts;
 }
-export default async function Misc() {
+export default async function Blog() {
   const posts = await getData();
   return (
     <PageLayout>
