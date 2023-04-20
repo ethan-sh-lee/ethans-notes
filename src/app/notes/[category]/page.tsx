@@ -29,7 +29,7 @@ const PostLayout = ({ params }: PageProps) => {
 
     return (
         <PageLayout>
-            <PageHeading head={cate.title} summary={cate.description} />
+            <PageHeading head={cate?.title} summary={cate?.description} />
             <div className="flex flex-col gap-2">
                 {posts.map((post, idx) => (
                     <PostCard key={idx} {...post} />
