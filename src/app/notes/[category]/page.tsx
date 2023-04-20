@@ -23,13 +23,13 @@ const PostLayout = ({ params }: PageProps) => {
     }).sort((a, b) => {
         return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
     })
-    const cate: Category | undefined = noteCategories.find((c) => {
+    const cate: Category = noteCategories.filter((c) => {
         return c.href == `/notes/${params.category}`
-    })
+    })[0];
 
     return (
         <PageLayout>
-            <PageHeading head={cate!.title} summary={cate!.description} />
+            <PageHeading head={cate.title} summary={cate.description} />
             <div className="flex flex-col gap-2">
                 {posts.map((post, idx) => (
                     <PostCard key={idx} {...post} />
