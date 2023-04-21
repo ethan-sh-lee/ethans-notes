@@ -1,6 +1,6 @@
 import { defineDocumentType, defineNestedType } from "contentlayer/source-files";
 
-export const Problems = defineDocumentType(() => ({
+export const Problem = defineDocumentType(() => ({
   name: "Problem",
   filePathPattern: `problems/**/*.md`,
   fields: {

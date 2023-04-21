@@ -10,4 +10,14 @@ module.exports = withContentlayer({
   experimental: {
     appDir: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.aladin.co.kr",
+        port: "",
+        pathname: "/product/**",
+      },
+    ],
+  },
 });

@@ -2,9 +2,9 @@ import { Paragraph } from "../typo/paragraphs";
 import { H6 } from "../typo/heading";
 import { Tag } from "../tag";
 
-export const CategoryCard = ({ cate }: { cate: Category }) => {
+export const CategoryCard = (cate: Category) => {
     return (
-        <div className="h-auto max-w-full p-4 bg-white border border-gray-200 
+        <div className="break-words h-auto max-w-full p-4 bg-white border border-gray-200 
                         rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700
                         hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
             <H6>{cate.title}</H6>
