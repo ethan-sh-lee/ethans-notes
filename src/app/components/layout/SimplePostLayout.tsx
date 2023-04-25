@@ -6,7 +6,7 @@ import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
 
 // Post 타입 컨텐츠
-export const SimpleLayout = ({ post }: { post: Post }) => {
+export const SimplePostLayout = ({ post }: { post: Post }) => {
     const MDXContent = useMDXComponent(post?.body?.code);
     return (
         <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose">

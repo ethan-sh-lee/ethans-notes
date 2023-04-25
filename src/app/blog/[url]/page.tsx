@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
-import { SimpleLayout } from "@/app/components/layout/SimplePostLayout";
+import { SimplePostLayout } from "@/app/components/layout/SimplePostLayout";
 
 type PageProps = {
     params: {
@@ -26,7 +26,7 @@ const PostLayout = ({ params }: PageProps) => {
     }
 
 
-    return <SimpleLayout post={post} />;
+    return <SimplePostLayout post={post} />;
 };
 
 export default PostLayout;
