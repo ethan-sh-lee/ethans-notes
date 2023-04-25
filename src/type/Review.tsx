@@ -49,6 +49,7 @@ const Book = defineNestedType(() => ({
     link: {
       type: "string",
       description: "책 링크",
+      required: true,
     },
     image: {
       type: "string",
@@ -61,11 +62,6 @@ const Book = defineNestedType(() => ({
 const Youtube = defineNestedType(() => ({
   name: 'Youtube',
   fields: {
-    link: {
-      type: "string",
-      required: true,
-      description: "유튜브 링크"
-    },
     id: {
       type: "string",
       required: true,
