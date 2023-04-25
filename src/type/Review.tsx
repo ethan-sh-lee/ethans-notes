@@ -1,4 +1,4 @@
-import { defineDocumentType } from "contentlayer/source-files";
+import { defineDocumentType, defineNestedType } from "contentlayer/source-files";
 
 export const Review = defineDocumentType(() => ({
   name: "Review",
@@ -14,6 +14,10 @@ export const Review = defineDocumentType(() => ({
       type: "string",
       description: "리뷰 미리보기",
     },
+    views: {
+      type: "number",
+      description: "내가 본 횟수",
+    },
     publishedAt: {
       type: "date",
       description: "발행일",
@@ -25,7 +29,8 @@ export const Review = defineDocumentType(() => ({
       default: false,
     },
     media: {
-      type: "string",
+      type: "nested",
+      of: [Youtube, Book],
       description: "리뷰 대상의 이미지, 영상, 링크 등",
       required: true,
     },
@@ -33,7 +38,38 @@ export const Review = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/${post._raw.flattenedPath}`,
+      resolve: (review) => `/${review._raw.flattenedPath}`,
     },
   },
 }));
+
+const Book = defineNestedType(() => ({
+  name: 'Book',
+  fields: {
+    link: {
+      type: "string",
+      description: "책 링크",
+    },
+    image: {
+      type: "string",
+      required: true,
+      description: "책 이미지 링크"
+    }
+  }
+}))
+
+const Youtube = defineNestedType(() => ({
+  name: 'Youtube',
+  fields: {
+    link: {
+      type: "string",
+      required: true,
+      description: "유튜브 링크"
+    },
+    id: {
+      type: "string",
+      required: true,
+      description: "유튜브 동영상 아이디"
+    }
+  }
+}))
