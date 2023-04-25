@@ -38,7 +38,7 @@ export const Problem = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (log) => `/${log._raw.flattenedPath}`,
+      resolve: (logs) => `/${logs._raw.flattenedPath}`,
     },
   },
 }));
