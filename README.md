@@ -92,7 +92,6 @@ publishedAt : "2023-04-23 12:00:00"
 isPublished : true
 media : 
     type : Youtube
-    link : "https://www.youtube.com/watch?v=9f0t_4A5LZY"
     id : "9f0t_4A5LZY"
 ---
 (유튜브 리뷰 마크다운으로 입력)
