@@ -8,7 +8,7 @@ import Link from "next/link";
 //메인 화면
 //포스트 카드와 포스트 리스트로 블로그 글을 탐색할 수 있도록 함
 
-async function getData() {
+function getData() {
   const problems: Problem[] = allProblems.filter((p) => {
     return p.isPublished
   }).sort((a, b) => {
@@ -17,8 +17,8 @@ async function getData() {
   return problems;
 }
 
-export default async function Home() {
-  const problems = await getData();
+export default function Home() {
+  const problems = getData();
   return (
     <PageLayout>
       <PageHeading head="Problems" summary="더 나은 문제해결 능력을 위해 알고리즘 문제를 풀고 있습니다." />
