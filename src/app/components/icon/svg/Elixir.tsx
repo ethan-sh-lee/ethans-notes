@@ -14,8 +14,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#fff" stop-opacity=".385" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-a)"
                 d="M64.4.5C36.7 13.9 1.9 83.4 30.9 113.9c26.8 33.5 85.4 1.3 68.4-40.5-21.5-36-35-37.9-34.9-72.9z"
             />
@@ -32,8 +32,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#9f8daf" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-b)"
                 d="M64.4.2C36.8 13.6 1.9 82.9 31 113.5c10.7 12.4 28 16.5 37.7 9.1 26.4-18.8 7.4-53.1 10.4-78.5C68.1 33.9 64.2 11.3 64.4.2z"
             />
@@ -50,8 +50,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#b7b4b4" stop-opacity=".278" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-c)"
                 d="M56.7 4.3c-22.3 15.9-28.2 75-24.1 94.2 8.2 48.1 75.2 28.3 69.6-16.5-6-29.2-48.8-39.2-45.5-77.7z"
             />
@@ -68,8 +68,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#32054f" stop-opacity=".54" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-d)"
                 d="M78.8 49.8c10.4 13.4 12.7 22.6 6.8 27.9-27.7 19.4-61.3 7.4-54-37.3C22.1 63 4.5 96.8 43.3 101.6c20.8 3.6 54 2 58.9-16.1-.2-15.9-10.8-22.9-23.4-35.7z"
             />
@@ -86,8 +86,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#340a50" stop-opacity=".821" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-e)"
                 d="M38.1 36.4c-2.9 21.2 35.1 77.9 58.3 71-17.7 35.6-56.9-21.2-64-41.7 1.5-11 2.2-16.4 5.7-29.3z"
             />
@@ -104,8 +104,8 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#f4f4f4" stop-opacity=".234" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-f)"
                 d="M60.4 49.7c.8 7.9 3.9 20.5 0 28.8S38.7 102 43.6 115.3c11.4 24.8 37.1-4.4 36.9-19 1.1-11.8-6.6-38.7-1.8-52.5L76.5 41l-13.6-4c-2.2 3.2-3 7.5-2.5 12.7z"
             />
@@ -122,27 +122,27 @@ export const Elixir = () => {
                 <stop offset="1" stop-color="#370c50" stop-opacity=".582" />
             </linearGradient>
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="url(#elixir-original-g)"
                 d="M65.3 10.8C36 27.4 48 53.4 49.3 81.6l19.1-55.4c-1.4-5.7-2.3-9.5-3.1-15.4z"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#330A4C"
                 fill-opacity=".316"
                 d="M68.3 26.1c-14.8 11.7-14.1 31.3-18.6 54 8.1-21.3 4.1-38.2 18.6-54z"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#FFF"
                 d="M45.8 119.7c8 1.1 12.1 2.2 12.5 3 .3 4.2-11.1 1.2-12.5-3z"
             />
             <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 fill="#EDEDED"
                 fill-opacity=".603"
                 d="M49.8 10.8c-6.9 7.7-14.4 21.8-18.2 29.7-1 6.5-.5 15.7.6 23.5.9-18.2 7.5-39.2 17.6-53.2z"
