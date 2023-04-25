@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allProblems } from "contentlayer/generated";
-import { LogsLayout } from "@/app/components/layout/LogsLayout";
+import { ProblemLogsLayout } from "@/app/components/layout/ProblemLogsLayout";
 
 type PageProps = {
     params: {
@@ -29,7 +29,7 @@ const ReviewLayout = ({ params }: PageProps) => {
         problem.logs = []
     }
 
-    return <LogsLayout logs={problem.logs!} />;
+    return <ProblemLogsLayout logs={problem.logs!} title={problem.title} link={problem.link} />;
 };
 
 export default ReviewLayout;
