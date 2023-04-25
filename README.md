@@ -19,5 +19,81 @@
 - TOC, Reading Time
 - Notes 페이지
 - Reviews 페이지
-- Google analytics
+- Google Analytics
 - Page view with PlanetScale
+
+## Contents Form
+
+### Post
+
+```yaml
+---
+title : "포스트 제목"
+description: "포스트 설명"
+publishedAt: "2023-04-23 12:00:00"
+isPublished: true
+---
+
+(포스트 내용 markdown으로 입력)
+```
+
+### Problems
+
+```yaml
+---
+title: '다항식 더하기'
+link: 'https://school.programmers.co.kr/learn/courses/30/lessons/120863'
+publishedAt: '2023-03-28 15:44:34'
+isPublished: true
+platform: 
+    type: Programmers
+    level: 'Lv.0'
+logs:
+    - 
+        date: '2023-03-28 15:44:34'
+        description: "문제 풀면서 느낀 점 적기"
+        isOk: true
+        lang: 'cpp'
+    - 
+        date: '2023-04-28 12:00:00'
+        isOk: true
+        lang: 'java'        
+---
+
+```
+
+### Reviews
+
+책 리뷰
+
+```yaml
+---
+title: "책 이름"
+description: "책 리뷰 한 줄 요약"
+views : 1
+publishedAt : "2023-04-23 12:00:00"
+isPublished : true
+media : 
+    type: Book
+    link : "https://책 링크"
+    image: "https://image.aladin.co.kr/product/1284/8/cover500/8956605416_3.jpg"
+---
+(책 리뷰 내용 markdown으로 입력)
+```
+
+유튜브 리뷰
+
+```yaml
+---
+title: "유튜브 영상 이름"
+description: "유튜브 리뷰 한 줄 요약"
+views : 2
+publishedAt : "2023-04-23 12:00:00"
+isPublished : true
+media : 
+    type : Youtube
+    link : "https://www.youtube.com/watch?v=9f0t_4A5LZY"
+    id : "9f0t_4A5LZY"
+---
+(유튜브 리뷰 마크다운으로 입력)
+```
