@@ -1,6 +1,6 @@
-import "../styles/globals.css";
-import Navbar from "./components/nav/Navbar";
-import Provider from "./components/ProviderDarkTheme";
+import "@/styles/globals.css";
+import Navbar from "@/app/components/nav/Navbar";
+import Provider from "@/app/components/ProviderDarkTheme";
 import { Nanum_Gothic_Coding } from "next/font/google";
 
 export const metadata = {

@@ -1,5 +1,5 @@
-import { H2 } from "./heading"
-import { Paragraph } from "./paragraphs"
+import { H2 } from "@/app/components/typo/heading"
+import { Paragraph } from "@/app/components/typo/paragraphs"
 
 interface headProps {
     head: string,
