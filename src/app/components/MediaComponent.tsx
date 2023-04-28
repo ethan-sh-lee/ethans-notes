@@ -42,7 +42,6 @@ export const MediaComponent = ({
         </div>
       );
     } else if (media.type == "Article") {
-      console.log(media.link);
       return <ArrowButton link={media.link} title="원본 보러가기" />;
     } else {
       return <></>;
