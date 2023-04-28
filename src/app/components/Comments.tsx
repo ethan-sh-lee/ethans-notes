@@ -2,7 +2,7 @@
 
 import Giscus from "@giscus/react";
 
-export default function Comments() {
+export const Comments = () => {
   return (
     <Giscus
       id="comments"
@@ -19,4 +19,4 @@ export default function Comments() {
       loading="lazy"
     />
   );
-}
+};
