@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={font.className} lang="ko">
+    <html className={font.className} lang="ko" suppressHydrationWarning>
       <body className="px-3 pt-2 dark:bg-black dark:text-white">
         <Provider>
           <Navbar />

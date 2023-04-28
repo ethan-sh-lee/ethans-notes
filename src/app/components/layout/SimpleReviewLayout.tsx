@@ -7,6 +7,7 @@ import { Comments } from "@/app/components/Comments";
 import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
 import { MediaComponent } from "@/app/components/MediaComponent";
+import { H2 } from "../typo/heading";
 
 export const SimpleReviewLayout = ({ review }: { review: Review }) => {
   const MDXContent = useMDXComponent(review?.body?.code);
@@ -16,7 +17,7 @@ export const SimpleReviewLayout = ({ review }: { review: Review }) => {
       <title>{review.title}</title>
       <article>
         <div>
-          <h1 className="text-3xl font-bold">{review.title}</h1>
+          <H2>{review.title}</H2>
           <time dateTime={review.publishedAt}>
             {format(parseISO(review.publishedAt), "LLLL d, yyyy")}
           </time>

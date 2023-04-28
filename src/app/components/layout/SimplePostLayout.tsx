@@ -4,6 +4,7 @@ import { format, parseISO } from "date-fns";
 import { Comments } from "@/app/components/Comments";
 import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
+import { H2 } from "../typo/heading";
 
 // Post 타입 컨텐츠
 export const SimplePostLayout = ({ post }: { post: Post }) => {
@@ -13,12 +14,11 @@ export const SimplePostLayout = ({ post }: { post: Post }) => {
       <title>{post.title}</title>
       <article>
         <div>
-          <h1 className="text-3xl font-bold">{post.title}</h1>
+          <H2>{post.title}</H2>
           <time dateTime={post.publishedAt}>
             {format(parseISO(post.publishedAt), "LLLL d, yyyy")}
           </time>
         </div>
-
         <MDXContent />
         <div className="pt-8" />
         <Comments />
