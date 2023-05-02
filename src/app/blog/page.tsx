@@ -19,7 +19,10 @@ export default async function Blog() {
   const posts = await getData();
   return (
     <PageLayout>
-      <PageHeading head="블로그" summary="개발, 기술, 스타트업, 기업문화, 제품에 대한 나의 생각을 포스팅합니다." />
+      <PageHeading
+        head="블로그"
+        summary="개발, 기술, 스타트업, 기업문화, 제품에 대한 나의 생각을 포스팅합니다."
+      />
       <div className="mt-4" />
       {posts.map((post, index) => (
         <Link key={index} href={post.url.replace("/posts", "")}>
