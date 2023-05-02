@@ -18,8 +18,9 @@ export default function Navbar() {
         Ethan&#39;s Notes
       </Link>
       <div
-        className={`${!isOpenMenu ? "hidden" : "block animate-fade-in-down"
-          }  ${"pb-4 lg:pb-0 lg:flex justify-between items-center w-full lg:w-auto order-2"}`}
+        className={`${
+          !isOpenMenu ? "hidden" : "block animate-fade-in-down"
+        }  ${"pb-4 lg:pb-0 lg:flex justify-between items-center w-full lg:w-auto order-2"}`}
       >
         <div
           className="lg:ml-8 flex-col lg:flex-row flex lg:space-x-8 mt-0 lg:text-sm lg:font-medium
@@ -29,8 +30,15 @@ export default function Navbar() {
             <Link
               key={index}
               href={menu.href}
-              onClick={() => { setIsOpenMenu(!isOpenMenu) }}
-              className="text-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-200 border-b border-gray-200 lg:hover:bg-transparent lg:border-0 block pr-4 py-2 lg:p-0"
+              onClick={() => {
+                setIsOpenMenu(!isOpenMenu);
+              }}
+              className="
+               text-gray-700 dark:text-gray-200 lg:dark:hover:text-gray-400 dark:hover:text-gray-200 
+               dark:hover:bg-gray-800 lg:dark:hover:bg-black
+               lg:hover:text-gray-800 border-b lg:border-b-0 border-gray-200 
+               lg:hover:bg-transparent lg:border-0 block pr-4 py-2 lg:p-0
+               hover:bg-gray-200"
             >
               {menu.title}
             </Link>
