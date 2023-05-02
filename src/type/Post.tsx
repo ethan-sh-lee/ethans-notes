@@ -5,6 +5,11 @@ export const Post = defineDocumentType(() => ({
   contentType: "mdx",
   filePathPattern: `posts/**/*.mdx`,
   fields: {
+    id: {
+      type: "number",
+      description: "정렬할 때 사용할 수도 있음",
+      required: false,
+    },
     title: {
       type: "string",
       description: "The title of the post",
@@ -35,8 +40,8 @@ export const Post = defineDocumentType(() => ({
       resolve: (post) => post._raw.sourceFileDir.replaceAll("posts", ""),
     },
     slug: {
-      type: 'string',
-      resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ''),
+      type: "string",
+      resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ""),
     },
   },
 }));
