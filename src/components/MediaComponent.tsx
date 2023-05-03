@@ -2,7 +2,7 @@ import { Article, Book, Youtube } from "contentlayer/generated";
 import YouTube from "react-youtube";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowButton } from "@/app/components/button/ArrowButton";
+import { ArrowButton } from "@/components/button/ArrowButton";
 
 export const MediaComponent = ({
   media,

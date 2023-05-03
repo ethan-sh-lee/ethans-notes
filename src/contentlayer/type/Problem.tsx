@@ -1,4 +1,7 @@
-import { defineDocumentType, defineNestedType } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+} from "contentlayer/source-files";
 
 export const Problem = defineDocumentType(() => ({
   name: "Problem",
@@ -33,7 +36,7 @@ export const Problem = defineDocumentType(() => ({
     logs: {
       type: "list",
       of: Log,
-    }
+    },
   },
   computedFields: {
     url: {
@@ -44,7 +47,7 @@ export const Problem = defineDocumentType(() => ({
 }));
 
 const Log = defineNestedType(() => ({
-  name: 'Log',
+  name: "Log",
   fields: {
     date: {
       type: "date",
@@ -63,7 +66,7 @@ const Log = defineNestedType(() => ({
     },
     lang: {
       required: true,
-      type: 'enum',
+      type: "enum",
       options: [
         "java",
         "cpp",
@@ -74,34 +77,27 @@ const Log = defineNestedType(() => ({
         "kotlin",
         "elixir",
         "sql",
-      ]
+      ],
     },
-  }
-}))
+  },
+}));
 
 const Programmers = defineNestedType(() => ({
-  name: 'Programmers',
+  name: "Programmers",
   fields: {
     level: {
-      type: 'enum',
+      type: "enum",
       required: true,
-      options: [
-        "Lv.0",
-        "Lv.1",
-        "Lv.2",
-        "Lv.3",
-        "Lv.4",
-        "Lv.5",
-      ]
+      options: ["Lv.0", "Lv.1", "Lv.2", "Lv.3", "Lv.4", "Lv.5"],
     },
-  }
-}))
+  },
+}));
 
 const BOJ = defineNestedType(() => ({
-  name: 'BOJ',
+  name: "BOJ",
   fields: {
     level: {
-      type: 'enum',
+      type: "enum",
       required: true,
       options: [
         "Unrated",
@@ -135,42 +131,29 @@ const BOJ = defineNestedType(() => ({
         "Ruby3",
         "Ruby2",
         "Ruby1",
-      ]
+      ],
     },
-  }
-}))
+  },
+}));
 
 const CodeWars = defineNestedType(() => ({
-  name: 'CodeWars',
+  name: "CodeWars",
   fields: {
     level: {
-      type: 'enum',
+      type: "enum",
       required: true,
-      options: [
-        "8kyu",
-        "7kyu",
-        "6kyu",
-        "5kyu",
-        "4kyu",
-        "3kyu",
-        "2kyu",
-        "1kyu",
-      ]
+      options: ["8kyu", "7kyu", "6kyu", "5kyu", "4kyu", "3kyu", "2kyu", "1kyu"],
     },
-  }
-}))
+  },
+}));
 
 const LeetCode = defineNestedType(() => ({
-  name: 'LeetCode',
+  name: "LeetCode",
   fields: {
     level: {
-      type: 'enum',
+      type: "enum",
       required: true,
-      options: [
-        "Easy",
-        "Medium",
-        "Hard",
-      ]
+      options: ["Easy", "Medium", "Hard"],
     },
-  }
-}))
+  },
+}));

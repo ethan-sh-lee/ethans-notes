@@ -1,8 +1,8 @@
 import "@/styles/globals.css";
-import Navbar from "@/app/components/nav/Navbar";
-import Provider from "@/app/components/ProviderDarkTheme";
+import Navbar from "@/components/nav/Navbar";
+import Provider from "@/components/ProviderDarkTheme";
 import { Nanum_Gothic_Coding } from "next/font/google";
-import { FooterLayout } from "./components/footer";
+import { FooterLayout } from "../components/footer";
 
 export const metadata = {
   title: "Ethan's notes",

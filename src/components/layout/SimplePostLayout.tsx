@@ -1,7 +1,7 @@
 import { Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
-import { Comments } from "@/app/components/Comments";
+import { Comments } from "@/components/Comments";
 import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
 import { H2 } from "../typo/heading";

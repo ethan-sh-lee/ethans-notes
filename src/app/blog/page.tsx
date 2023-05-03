@@ -1,8 +1,8 @@
 import { allPosts } from "contentlayer/generated";
-import PostCard from "@/app/components/card/PostCard";
+import PostCard from "@/components/card/PostCard";
 import { compareDesc } from "date-fns";
-import { PageHeading } from "@/app/components/typo/PageHeading";
-import { PageLayout } from "@/app/components/layout/PageLayout";
+import { PageHeading } from "@/components/typo/PageHeading";
+import { PageLayout } from "@/components/layout/PageLayout";
 import Link from "next/link";
 
 async function getData() {

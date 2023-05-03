@@ -3,13 +3,11 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
-import { Post } from "./src/type/Post";
-import { Problem } from "./src/type/Problem";
-import { Review } from "./src/type/Review";
+import * as documentTypes from "./src/contentlayer";
 
 export default makeSource({
   contentDirPath: "contents",
-  documentTypes: [Post, Problem, Review],
+  documentTypes,
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrism],

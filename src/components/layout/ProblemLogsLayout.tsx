@@ -1,8 +1,8 @@
 import { Log } from "contentlayer/generated";
 import "@/styles/prism-darcula.css";
 import "@/styles/prism.css";
-import DailyLogCard from "@/app/components/card/DailyLogCard";
-import { ArrowButton } from "@/app/components/button/ArrowButton";
+import DailyLogCard from "@/components/card/DailyLogCard";
+import { ArrowButton } from "@/components/button/ArrowButton";
 
 export const ProblemLogsLayout = ({
   logs,

@@ -1,9 +1,9 @@
 import { noteCategories } from "@/const/menu";
 import { allPosts } from "contentlayer/generated";
 import compareDesc from "date-fns/compareDesc";
-import { PageLayout } from "@/app/components/layout/PageLayout";
-import { PageHeading } from "@/app/components/typo/PageHeading";
-import PostCard from "@/app/components/card/PostCard";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { PageHeading } from "@/components/typo/PageHeading";
+import PostCard from "@/components/card/PostCard";
 import Link from "next/link";
 
 type PageProps = {
