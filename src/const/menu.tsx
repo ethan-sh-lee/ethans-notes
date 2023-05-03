@@ -1,4 +1,4 @@
-export const menus = [
+export const menus: Menu[] = [
   { title: "Blog", href: "/blog" },
   { title: "Notes", href: "/notes" },
   { title: "Problems", href: "/problems" },

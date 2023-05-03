@@ -26,7 +26,7 @@ export default function Navbar() {
           className="lg:ml-8 flex-col lg:flex-row flex lg:space-x-8 mt-0 lg:text-sm lg:font-medium
         "
         >
-          {menus.map((menu, index) => (
+          {menus.map((menu: Menu, index) => (
             <Link
               key={index}
               href={menu.href}
