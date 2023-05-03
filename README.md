@@ -12,13 +12,11 @@
 - Giscus for comments system
 - Light and Dark Theme with next/themes, tailwindcss
 - Deploy via Vercel
-- Problem for algorithms
 
 ## Roadmap
 
-- TOC, Reading Time
-- Notes 페이지
-- Reviews 페이지
+- SEO
+- TOC  
 - Google Analytics
 - Page view with PlanetScale
 
