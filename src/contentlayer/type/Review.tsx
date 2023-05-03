@@ -2,6 +2,7 @@ import {
   defineDocumentType,
   defineNestedType,
 } from "contentlayer/source-files";
+import readingTime from "reading-time";
 
 export const Review = defineDocumentType(() => ({
   name: "Review",
@@ -43,6 +44,7 @@ export const Review = defineDocumentType(() => ({
       type: "string",
       resolve: (review) => `/${review._raw.flattenedPath}`,
     },
+    readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   },
 }));
 

@@ -1,4 +1,5 @@
 import { defineDocumentType } from "contentlayer/source-files";
+import readingTime, { ReadTimeResults } from "reading-time";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -42,6 +43,10 @@ export const Post = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+    readingTime: {
+      type: "json",
+      resolve: (doc): ReadTimeResults => readingTime(doc.body.raw),
     },
   },
 }));
