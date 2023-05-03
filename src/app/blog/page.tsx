@@ -1,11 +1,11 @@
 import { allPosts } from "contentlayer/generated";
-import PostCard from "@/components/card/PostCard";
 import { compareDesc } from "date-fns";
 import { PageHeading } from "@/components/typo/PageHeading";
 import { PageLayout } from "@/components/layout/PageLayout";
 import Link from "next/link";
+import PostDateCard from "@/components/card/PostDateCard";
 
-async function getData() {
+function getData() {
   const posts = allPosts
     .filter((post) => {
       return post._raw.sourceFileDir == "posts/blog";
@@ -16,7 +16,7 @@ async function getData() {
   return posts;
 }
 export default async function Blog() {
-  const posts = await getData();
+  const posts = getData();
   return (
     <PageLayout>
       <PageHeading
@@ -26,7 +26,7 @@ export default async function Blog() {
       <div className="mt-4" />
       {posts.map((post, index) => (
         <Link key={index} href={post.url.replace("/posts", "")}>
-          <PostCard {...post} />
+          <PostDateCard {...post} />
         </Link>
       ))}
     </PageLayout>
