@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allReviews } from "contentlayer/generated";
-import { SimpleReviewLayout } from "@/components/layout/SimpleReviewLayout";
+import { ReviewLayout } from "@/components/layout/ReviewLayout";
 
 type PageProps = {
   params: {
@@ -8,13 +8,13 @@ type PageProps = {
   };
 };
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export function generateStaticParams(): PageProps["params"][] {
   return allReviews.map(({ url }) => ({
     url: url,
   }));
 }
 
-const ReviewLayout = ({ params }: PageProps) => {
+const ReviewPage = ({ params }: PageProps) => {
   const review = allReviews.find(({ url }) => {
     return url.replaceAll("/reviews/", "") == params.url;
   });
@@ -23,7 +23,7 @@ const ReviewLayout = ({ params }: PageProps) => {
     notFound();
   }
 
-  return <SimpleReviewLayout review={review} />;
+  return <ReviewLayout review={review} />;
 };
 
-export default ReviewLayout;
+export default ReviewPage;

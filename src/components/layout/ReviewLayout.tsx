@@ -9,7 +9,7 @@ import "@/styles/prism.css";
 import { MediaComponent } from "@/components/MediaComponent";
 import { H2 } from "../typo/heading";
 
-export const SimpleReviewLayout = ({ review }: { review: Review }) => {
+export const ReviewLayout = ({ review }: { review: Review }) => {
   const MDXContent = useMDXComponent(review?.body?.code);
 
   return (
