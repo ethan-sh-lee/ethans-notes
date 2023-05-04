@@ -5,6 +5,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
 import PostCard from "@/components/card/PostCard";
 import Link from "next/link";
+import PostDateCard from "@/components/card/PostDateCard";
 
 const PostLayout = ({
   params,
@@ -32,7 +33,7 @@ const PostLayout = ({
       <div className="flex flex-col gap-2">
         {notes.map((note, index) => (
           <Link key={index} href={note.url}>
-            <PostCard {...note} />
+            <PostDateCard {...note} />
           </Link>
         ))}
       </div>
