@@ -13,7 +13,7 @@ export const ReviewLayout = ({ review }: { review: Review }) => {
   const MDXContent = useMDXComponent(review?.body?.code);
 
   return (
-    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose">
+    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose dark:prose-invert">
       <title>{review.title}</title>
       <article>
         <div>

@@ -19,7 +19,7 @@ export const PostLayout = ({
 }) => {
   const MDXContent = useMDXComponent(post?.body?.code);
   return (
-    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose">
+    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose dark:prose-invert">
       <title>{post.title}</title>
       <article>
         <div>
