@@ -4,8 +4,6 @@ import { Review } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { Comments } from "@/components/Comments";
-import "@/styles/prism-darcula.css";
-import "@/styles/prism.css";
 import { MediaComponent } from "@/components/MediaComponent";
 import { H2 } from "../typo/heading";
 
@@ -13,7 +11,7 @@ export const ReviewLayout = ({ review }: { review: Review }) => {
   const MDXContent = useMDXComponent(review?.body?.code);
 
   return (
-    <div className="px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 prose dark:prose-invert">
+    <div className="px-2 mx-auto xl:px-5 max-w-screen-lg py-2 lg:py-4 prose-sm md:prose dark:prose-invert">
       <title>{review.title}</title>
       <article>
         <div>

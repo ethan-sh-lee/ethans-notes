@@ -5,7 +5,7 @@ import {
 
 export const Problem = defineDocumentType(() => ({
   name: "Problem",
-  filePathPattern: `problems/**/*.md`,
+  filePathPattern: `problems/**/*.mdx`,
   fields: {
     title: {
       type: "string",

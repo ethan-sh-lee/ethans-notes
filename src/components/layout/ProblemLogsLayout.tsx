@@ -1,6 +1,4 @@
 import { Log } from "contentlayer/generated";
-import "@/styles/prism-darcula.css";
-import "@/styles/prism.css";
 import DailyLogCard from "@/components/card/DailyLogCard";
 import { ArrowButton } from "@/components/button/ArrowButton";
 

@@ -3,6 +3,8 @@ import Navbar from "@/components/nav/Navbar";
 import Provider from "@/components/ProviderDarkTheme";
 import { Noto_Sans_KR } from "next/font/google";
 import { FooterLayout } from "../components/footer";
+import "@/styles/prism-vsc-dark-plus.css";
+import "@/styles/rehype-code-titles.css";
 
 export const metadata = {
   title: "Ethan's notes",

@@ -7,16 +7,16 @@
 - [Contentlayer](https://www.contentlayer.dev/blog/working-with-content-is-hard-for-developers)
 - RemarkGfm for [github flavored markdown](https://github.github.com/gfm/)
 - Rehype-prism-plus for highlight code blocks
+- [prism-themes](https://github.com/PrismJS/prism-themes/tree/master/themes) for code blocks style
 - Rehype slug, autolink headings
 - Tailwindcss for CSS, Markdown Typography
 - Giscus for comments system
 - Light and Dark Theme with next/themes, tailwindcss
 - Deploy via Vercel
-
+  
 ## Roadmap
 
 - SEO
-- TOC  
 - Google Analytics
 - Page view with PlanetScale
 
