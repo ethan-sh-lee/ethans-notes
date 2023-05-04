@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import Navbar from "@/components/nav/Navbar";
 import Provider from "@/components/ProviderDarkTheme";
-import { Nanum_Gothic_Coding } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import { FooterLayout } from "../components/footer";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
   description: "code, tech, engineering blog",
 };
 
-const font = Nanum_Gothic_Coding({
+const font = Noto_Sans_KR({
   weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",

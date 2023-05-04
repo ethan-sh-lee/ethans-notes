@@ -4,19 +4,19 @@ import { ReviewLayout } from "@/components/layout/ReviewLayout";
 
 type PageProps = {
   params: {
-    url: string;
+    slug: string;
   };
 };
 
 export function generateStaticParams(): PageProps["params"][] {
-  return allReviews.map(({ url }) => ({
-    url: url,
+  return allReviews.map(({ slug }) => ({
+    slug: slug,
   }));
 }
 
 const ReviewPage = ({ params }: PageProps) => {
-  const review = allReviews.find(({ url }) => {
-    return url.replaceAll("/reviews/", "") == params.url;
+  const review = allReviews.find(({ slug }) => {
+    return slug == params.slug;
   });
 
   if (!review) {

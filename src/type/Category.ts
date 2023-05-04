@@ -1,6 +1,6 @@
 type Category = {
   title: string;
   description: string;
-  href: string;
+  category: string;
   tags: string[];
 };

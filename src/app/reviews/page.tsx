@@ -9,9 +9,6 @@ import Link from "next/link";
 function getData() {
   const reviews = allReviews
     .filter((review) => {
-      return review._raw.sourceFileDir == "reviews";
-    })
-    .filter((review) => {
       return review.isPublished;
     })
     .sort((a, b) => {

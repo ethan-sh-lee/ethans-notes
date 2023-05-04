@@ -1,33 +1,28 @@
 import { noteCategories } from "@/const/menu";
-import { allPosts } from "contentlayer/generated";
+import { allNotes } from "contentlayer/generated";
 import compareDesc from "date-fns/compareDesc";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
 import PostCard from "@/components/card/PostCard";
 import Link from "next/link";
 
-type PageProps = {
+const PostLayout = ({
+  params,
+}: {
   params: {
     category: string;
   };
-};
-
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return noteCategories.map((category) => ({
-    category: category.href,
-  }));
-}
-
-const PostLayout = ({ params }: PageProps) => {
-  const posts = allPosts
-    .filter((post) => {
-      return post._raw.sourceFileDir == `posts/notes/${params.category}`;
+}) => {
+  const notes = allNotes
+    .filter((note) => {
+      return note.category == params.category;
     })
     .sort((a, b) => {
       return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
     });
+
   const cate: Category = noteCategories.filter((c) => {
-    return c.href == `/notes/${params.category}`;
+    return c.category == params.category;
   })[0];
 
   return (
@@ -35,9 +30,9 @@ const PostLayout = ({ params }: PageProps) => {
       <PageHeading head={cate?.title} summary={cate?.description} />
       <div className="mt-8" />
       <div className="flex flex-col gap-2">
-        {posts.map((post, index) => (
-          <Link key={index} href={post.url.replace("/posts", "")}>
-            <PostCard {...post} />
+        {notes.map((note, index) => (
+          <Link key={index} href={note.url}>
+            <PostCard {...note} />
           </Link>
         ))}
       </div>

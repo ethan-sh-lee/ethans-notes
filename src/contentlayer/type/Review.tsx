@@ -44,6 +44,10 @@ export const Review = defineDocumentType(() => ({
       type: "string",
       resolve: (review) => `/${review._raw.flattenedPath}`,
     },
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(".mdx", ""),
+    },
     readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   },
 }));

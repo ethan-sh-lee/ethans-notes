@@ -1,4 +1,4 @@
-import { Post } from "contentlayer/generated";
+import { Note, Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { Comments } from "@/components/Comments";
@@ -13,7 +13,7 @@ export const PostLayout = ({
   prevPost,
   nextPost,
 }: {
-  post: Post;
+  post: Post | Note;
   prevPost: RelatedPost | null;
   nextPost: RelatedPost | null;
 }) => {

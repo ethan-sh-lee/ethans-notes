@@ -43,6 +43,10 @@ export const Problem = defineDocumentType(() => ({
       type: "string",
       resolve: (logs) => `/${logs._raw.flattenedPath}`,
     },
+    slug: {
+      type: "string",
+      resolve: (doc) => doc._raw.sourceFileName.replace(".md", ""),
+    },
   },
 }));
 

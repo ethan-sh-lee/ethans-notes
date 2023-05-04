@@ -1,11 +1,16 @@
 import { defineDocumentType } from "contentlayer/source-files";
 import readingTime, { ReadTimeResults } from "reading-time";
 
-export const Post = defineDocumentType(() => ({
-  name: "Post",
+export const Note = defineDocumentType(() => ({
+  name: "Note",
   contentType: "mdx",
-  filePathPattern: `blog/**/*.mdx`,
+  filePathPattern: `notes/**/*.mdx`,
   fields: {
+    id: {
+      type: "number",
+      description: "정렬할 때 사용",
+      required: true,
+    },
     title: {
       type: "string",
       description: "The title of the post",
@@ -29,11 +34,15 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/${post._raw.flattenedPath}`,
+      resolve: (note) => `/${note._raw.flattenedPath}`,
+    },
+    category: {
+      type: "string",
+      resolve: (note) => note._raw.sourceFileDir.replace("notes/", ""),
     },
     slug: {
       type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(".mdx", ""),
+      resolve: (note) => note._raw.sourceFileName.replace(".mdx", ""),
     },
     readingTime: {
       type: "json",

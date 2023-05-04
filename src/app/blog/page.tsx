@@ -6,16 +6,12 @@ import Link from "next/link";
 import PostDateCard from "@/components/card/PostDateCard";
 
 function getData() {
-  const posts = allPosts
-    .filter((post) => {
-      return post._raw.sourceFileDir == "posts/blog";
-    })
-    .sort((a, b) => {
-      return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
-    });
+  const posts = allPosts.sort((a, b) => {
+    return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
+  });
   return posts;
 }
-export default async function Blog() {
+export default function Blog() {
   const posts = getData();
   return (
     <PageLayout>

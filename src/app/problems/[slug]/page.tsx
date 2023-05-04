@@ -4,19 +4,20 @@ import { ProblemLogsLayout } from "@/components/layout/ProblemLogsLayout";
 
 type PageProps = {
   params: {
-    url: string;
+    slug: string;
   };
 };
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  return allProblems.map(({ url }) => ({
-    url: url,
+  return allProblems.map(({ slug }) => ({
+    slug: slug,
   }));
 }
 
 const ReviewLayout = ({ params }: PageProps) => {
-  const problem = allProblems.find(({ url }) => {
-    return url.replaceAll("/problems/", "") == params.url;
+  const problem = allProblems.find(({ slug }) => {
+    console.log(slug);
+    return slug === params.slug;
   });
 
   if (!problem) {

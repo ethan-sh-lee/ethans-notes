@@ -1,49 +1,39 @@
 import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
+import { Note, allNotes } from "contentlayer/generated";
 import { PostLayout } from "@/components/layout/PostLayout";
-import { noteCategories } from "@/const/menu";
 import { compareDesc } from "date-fns";
 
-type PageProps = {
-  params: {
-    category: string;
-    slug: string;
-  };
-};
-
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
-  const slugs = allPosts
-    .filter(({ path }) => {
-      return noteCategories.find(({ href }) => {
-        href == path;
-      });
-    })
-    .map(({ path, slug }) => {
+export async function generateStaticParams({
+  params: { category },
+}: {
+  params: { category: string };
+}) {
+  return allNotes
+    .filter((note: Note) => note.category === category)
+    .map((note: Note) => {
       return {
-        category: path,
-        slug: slug,
+        slug: note.slug,
       };
     });
-  return slugs;
 }
 
-const PostPage = ({ params }: PageProps) => {
-  const allPostsFromCategory = allPosts
-    .filter(({ url }) => {
-      return url.replaceAll(`/posts/notes/`, "").includes(params.category);
+const PostPage = ({
+  params,
+}: {
+  params: { category: string; slug: string };
+}) => {
+  const allPostsFromCategory = allNotes
+    .filter(({ category }) => {
+      return category === params.category;
     })
-    .sort((a, b) => compareDesc(a.id!, b.id!));
+    .sort((a, b) => compareDesc(a.id, b.id));
 
-  const post = allPostsFromCategory.find(({ url }) => {
-    return (
-      url.replaceAll(`/posts/notes/${params.category}/`, "") === params.slug
-    );
+  const post = allPostsFromCategory.find(({ slug }) => {
+    return slug === params.slug;
   });
 
-  const postIndex = allPostsFromCategory.findIndex(({ url }) => {
-    return (
-      url.replaceAll(`/posts/notes/${params.category}/`, "") === params.slug
-    );
+  const postIndex = allPostsFromCategory.findIndex(({ slug }) => {
+    return slug === params.slug;
   });
 
   if (postIndex === -1) {
@@ -52,11 +42,11 @@ const PostPage = ({ params }: PageProps) => {
 
   const prevFull = allPostsFromCategory[postIndex + 1] || null;
   const prevPost: RelatedPost | null = prevFull
-    ? { title: prevFull.title, href: `${prevFull.path}/${prevFull.slug}` }
+    ? { title: prevFull.title, href: prevFull.url }
     : null;
   const nextFull = allPostsFromCategory[postIndex - 1] || null;
   const nextPost: RelatedPost | null = nextFull
-    ? { title: nextFull.title, href: `${nextFull.path}/${nextFull.slug}` }
+    ? { title: nextFull.title, href: nextFull.url }
     : null;
 
   if (!post) {

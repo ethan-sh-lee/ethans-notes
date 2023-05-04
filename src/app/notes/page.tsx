@@ -17,7 +17,7 @@ export default function Notes() {
       <div className="mt-4" />
       <MasonryLayout size={{ xs: 1, sm: 2, md: 2, lg: 2 }}>
         {noteCategories.map((category, index) => (
-          <Link href={category.href} key={index}>
+          <Link href={`/notes/${category.category}`} key={index}>
             <CategoryCard {...category} />
           </Link>
         ))}
