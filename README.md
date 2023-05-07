@@ -8,6 +8,7 @@
 - RemarkGfm for [github flavored markdown](https://github.github.com/gfm/)
 - Rehype-prism-plus for highlight code blocks
 - [prism-themes](https://github.com/PrismJS/prism-themes/tree/master/themes) for code blocks style
+- Mermaid and Rehype-mermaidjs for Diagram in content
 - Rehype slug, autolink headings
 - Tailwindcss for CSS, Markdown Typography
 - Giscus for comments system
@@ -19,6 +20,14 @@
 - SEO
 - Google Analytics
 - Page view with PlanetScale
+
+## dependencies
+
+다이어그램 생성을 위한 [rehype-mermaidjs](https://github.com/remcohaszing/rehype-mermaidjs)의 종속성인 playwrite를 추가해야함
+
+```bash
+npx playwright install --with-deps chromium
+```
 
 ## Contents Form
 

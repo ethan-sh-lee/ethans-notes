@@ -4,6 +4,7 @@ import rehypeSlug from "rehype-slug";
 import rehypePrism from "rehype-prism-plus";
 import rehypeCodeTitles from "rehype-code-titles";
 import remarkGfm from "remark-gfm";
+import rehypeMermaid from "rehype-mermaidjs";
 import * as documentTypes from "./src/contentlayer";
 
 export default makeSource({
@@ -15,6 +16,7 @@ export default makeSource({
       rehypeCodeTitles,
       rehypePrism,
       rehypeAutolinkHeadings,
+      rehypeMermaid,
     ],
     remarkPlugins: [remarkGfm],
   },
