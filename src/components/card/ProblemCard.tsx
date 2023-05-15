@@ -1,7 +1,7 @@
 import { Problem } from ".contentlayer/generated";
 import Link from "next/link";
 import { Paragraph, SmallParagraph } from "../typo/paragraphs";
-import { iconRenderer } from "../icon/IconRenderer";
+import { IconRenderer } from "../icon/IconRenderer";
 
 export default function DailyLogCard(problem: Problem) {
   const langs = problem.logs
@@ -28,11 +28,15 @@ export default function DailyLogCard(problem: Problem) {
           {problem.title}
         </Link>
         <div className="mb-0 sm:mb-5" />
-        <Paragraph>{"풀어본 횟수 : " + problem.logs?.length.toString() + "회"}</Paragraph>
+        <Paragraph>
+          {"풀어본 횟수 : " + problem.logs?.length.toString() + "회"}
+        </Paragraph>
       </div>
       <div className="mb-5 sm:mb-0" />
       <div className="flex gap-1">
-        {langs!.map((lang, index) => { return iconRenderer(lang, index) })}
+        {langs!.map((lang, index) => {
+          return IconRenderer(lang, index);
+        })}
       </div>
     </div>
   );

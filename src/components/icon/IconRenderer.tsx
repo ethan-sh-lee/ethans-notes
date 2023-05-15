@@ -9,25 +9,25 @@ import { Python } from "./svg/Python";
 import { Rust } from "./svg/Rust";
 import { H6 } from "../typo/heading";
 
-export const iconRenderer = (param: string, key: number) => {
+export const IconRenderer = (param: string, key: number) => {
   switch (param) {
-    case 'cpp':
+    case "cpp":
       return <Cpp key={key} />;
-    case 'elixir':
+    case "elixir":
       return <Elixir key={key} />;
-    case 'haskell':
+    case "haskell":
       return <Haskell key={key} />;
-    case 'java':
+    case "java":
       return <Java key={key} />;
-    case 'javascript':
+    case "javascript":
       return <JavaScript key={key} />;
-    case 'kotlin':
+    case "kotlin":
       return <Kotlin key={key} />;
-    case 'python':
+    case "python":
       return <Python key={key} />;
-    case 'rust':
+    case "rust":
       return <Rust key={key} />;
     default:
       return <H6 key={key}>{param}</H6>;
   }
-} 
+};
