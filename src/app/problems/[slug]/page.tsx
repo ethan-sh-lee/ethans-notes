@@ -16,7 +16,6 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
 
 const ReviewLayout = ({ params }: PageProps) => {
   const problem = allProblems.find(({ slug }) => {
-    console.log(slug);
     return slug === params.slug;
   });
 
