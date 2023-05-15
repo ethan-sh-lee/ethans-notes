@@ -45,7 +45,7 @@ export const Problem = defineDocumentType(() => ({
     },
     slug: {
       type: "string",
-      resolve: (doc) => doc._raw.sourceFileName.replace(".md", ""),
+      resolve: (doc) => doc._raw.sourceFileName.replace(".mdx", ""),
     },
   },
 }));

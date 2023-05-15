@@ -2,6 +2,7 @@ import { Problem } from ".contentlayer/generated";
 import Link from "next/link";
 import { Paragraph, SmallParagraph } from "../typo/paragraphs";
 import { IconRenderer } from "../icon/IconRenderer";
+import { H4 } from "../typo/heading";
 
 export default function DailyLogCard(problem: Problem) {
   const langs = problem.logs
@@ -19,14 +20,7 @@ export default function DailyLogCard(problem: Problem) {
           {problem.platform.type + " " + problem.platform.level}
         </SmallParagraph>
         <div className="mb-1" />
-        <Link
-          rel="noopener noreferrer"
-          target="_blank"
-          className="text-2xl font-bold dark:text-white hover:text-gray-700 dark:hover:text-gray-200 hover:underline"
-          href={problem.link}
-        >
-          {problem.title}
-        </Link>
+        <H4>{problem.title}</H4>
         <div className="mb-0 sm:mb-5" />
         <Paragraph>
           {"풀어본 횟수 : " + problem.logs?.length.toString() + "회"}
