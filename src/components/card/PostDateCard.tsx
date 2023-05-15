@@ -5,17 +5,20 @@ import { Paragraph, XSParagraph } from "../typo/paragraphs";
 
 export default function PostCard(post: Post | Note) {
   return (
-    <div className="w-full py-4 dark:px-4 rounded bg-white dark:bg-gray-800 dark:border-gray-700">
-      <div className="bg-white rounded-lg dark:bg-gray-800">
+    <div
+      className="w-full py-4 dark:px-4 rounded bg-white dark:bg-gray-800 dark:border-gray-700
+      dark:hover:bg-gray-700 cursor-pointer"
+    >
+      <div className="hover:underline">
         <H4>{post.title}</H4>
-        <XSParagraph>{`${format(parseISO(post.publishedAt), "LLLL d, yyyy")}${
-          Math.ceil(post.readingTime["minutes"]) >= 1
-            ? ` · ${post.readingTime["text"]}`
-            : ""
-        }`}</XSParagraph>
-        <div className="pt-2" />
-        <Paragraph>{post.description}</Paragraph>
       </div>
+      <XSParagraph>{`${format(parseISO(post.publishedAt), "LLLL d, yyyy")}${
+        Math.ceil(post.readingTime["minutes"]) >= 1
+          ? ` · ${post.readingTime["text"]}`
+          : ""
+      }`}</XSParagraph>
+      <div className="pt-2" />
+      <Paragraph>{post.description}</Paragraph>
     </div>
   );
 }
