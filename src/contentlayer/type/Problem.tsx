@@ -58,10 +58,11 @@ const Log = defineNestedType(() => ({
       description: "문제 푼 날짜",
       required: true,
     },
-    isOk: {
-      type: "boolean",
-      description: "failure or success",
+    state: {
+      type: "enum",
+      description: "success or answer sheet",
       required: true,
+      options: ["success", "answer"],
     },
     description: {
       type: "string",
