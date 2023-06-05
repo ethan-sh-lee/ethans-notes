@@ -60,7 +60,7 @@ const Log = defineNestedType(() => ({
     },
     state: {
       type: "enum",
-      description: "success or answer sheet",
+      description: "success or answer",
       required: true,
       options: ["success", "answer"],
     },
