@@ -23,12 +23,15 @@
     "next-contentlayer": "^0.3.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
+    "react-calendar-heatmap": "^1.9.0",
     "react-dom": "^18.2.0",
+    "react-tooltip": "^5.13.1",
     "react-youtube": "^10.1.0",
     "typescript": "5.0.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "github:tailwindcss/typography",
+    "@types/react-calendar-heatmap": "^1.6.3",
     "@types/youtube-player": "^5.5.7",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
