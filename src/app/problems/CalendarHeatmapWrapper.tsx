@@ -69,11 +69,11 @@ export default function CalendarHeatmapWrapper({
         <Tooltip id="tooltip" />
 
         <div className="flex justify-between items-center">
-          <p className="text-xs md:text-sm lg:text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-xs  text-gray-700 dark:text-gray-400">
             {`${getAllProblems()} problems in 2023`}
           </p>
           <div className="flex gap-0.5 items-center">
-            <p className="text-xs md:text-sm lg:text-md text-gray-500 dark:text-gray-400">
+            <p className="text-xs mr-0.5 text-gray-700 dark:text-gray-400">
               Less
             </p>
             {Array.from({ length: 5 }).map((v, i) => {
@@ -113,8 +113,8 @@ export default function CalendarHeatmapWrapper({
                 );
               }
             })}
-            <p className="text-xs md:text-sm lg:text-sm text-gray-500 dark:text-gray-400">
-              more
+            <p className="text-xs ml-0.5 text-gray-700 dark:text-gray-400">
+              More
             </p>
           </div>
         </div>
