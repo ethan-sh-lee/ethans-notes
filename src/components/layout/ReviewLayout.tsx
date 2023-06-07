@@ -5,7 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { Comments } from "@/components/Comments";
 import { MediaComponent } from "@/components/MediaComponent";
-import { H2 } from "../typo/heading";
+import { H2 } from "@/components/typo/heading";
 
 export const ReviewLayout = ({ review }: { review: Review }) => {
   const MDXContent = useMDXComponent(review?.body?.code);

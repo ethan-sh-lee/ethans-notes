@@ -1,7 +1,7 @@
 import { Log } from "contentlayer/generated";
 import DailyLogCard from "@/components/card/DailyLogCard";
 import { ArrowButton } from "@/components/button/ArrowButton";
-import { H2 } from "../typo/heading";
+import { H2 } from "@/components/typo/heading";
 
 export const ProblemLogsLayout = ({
   logs,

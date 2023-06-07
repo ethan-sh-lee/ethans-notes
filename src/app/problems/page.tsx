@@ -2,9 +2,9 @@
 
 import { compareDesc } from "date-fns";
 import { Problem, allProblems } from "contentlayer/generated";
-import ProblemCard from "../../components/card/ProblemCard";
-import { PageHeading } from "../../components/typo/PageHeading";
-import { PageLayout } from "../../components/layout/PageLayout";
+import ProblemCard from "@/components/card/ProblemCard";
+import { PageHeading } from "@/components/typo/PageHeading";
+import { PageLayout } from "@/components/layout/PageLayout";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -15,7 +15,7 @@ const DropDownOnlyClient = dynamic(() => import("@/components/dropdown"), {
   ssr: false,
 });
 const GithubCalendarOnlyClient = dynamic(
-  () => import("./CalendarHeatmapWrapper"),
+  () => import("@/components/CalendarHeatmapWrapper"),
   {
     ssr: false,
   }

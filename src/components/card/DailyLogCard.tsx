@@ -6,7 +6,7 @@ import {
   GreenParagraph,
   SmallParagraph,
   XSParagraph,
-} from "../typo/paragraphs";
+} from "@/components/typo/paragraphs";
 
 export default function DailyLogCard(log: Log) {
   return (

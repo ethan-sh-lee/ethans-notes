@@ -1,6 +1,6 @@
 import { Note, Post } from "contentlayer/generated";
-import { H4 } from "../typo/heading";
-import { Paragraph } from "../typo/paragraphs";
+import { H4 } from "@/components/typo/heading";
+import { Paragraph } from "@/components/typo/paragraphs";
 
 export default function PostCard(post: Post | Note) {
   return (

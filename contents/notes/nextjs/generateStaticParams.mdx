@@ -1,0 +1,389 @@
+---
+id: 1
+title : 'generate Static Params로 SSG 구현하기'
+description: 'generateStaticParams를 활용하여 Dynamic Segments 페이지를 빌드 시 미리 생성하는 방법에 대해 정리한다.'
+publishedAt: '2023-04-23 12:00:00'
+isPublished: true
+---
+
+# Dynamic Segments란
+
+세그먼트의 이름을 미리 알지 못하고 동적 데이터로 경로를 생성하려는 경우 요청 시 채워지거나 빌드 시 동적 세그먼트를 활용할 수 있다. - Nextjs 공식문서
+
+Dynamic Segments란 쉽게 말해 NextJs가 관리하는 Route 내에서 동적으로 URI path variable을 다루기 위한 것이다. 
+
+* /blog/my-post-1
+* /blog/my-post-2
+* /blog/my-post-3
+
+위와 같은 경로가 동적으로 필요할 경우 app/blog/[slug]/page.tsx 와 같이 하나의 페이지에서 slug 파라미터를 받아서 처리할 수 있다. 또한 layout, route, metadata에서도 slug 파라미터를 받아서 처리할 수 있다.
+
+path variable은 아래 처럼 여러 개일 수 있다.
+* /products/clothes/1
+* /products/hat/1
+* /products/bag/1
+
+app/products/[category]/[product]/page.tsx 페이지에서 category와 product 파라미터를 받아서 처리할 수 있다.
+
+Dynamic Segments는 런타임 중 Fetch API의 결과에 따라 만들어질 수도 있고 Build시에 미리 생성할 수도 있다.
+
+여기서는 generateStaticParams를 사용한 Build시 미리 생성하는 것에 대해 알아본다.
+
+## 블로그 동적 세그먼트 예시
+
+app/blog/[slug]/page.tsx
+
+| Route                  | Example URL | params     |
+| ----------------------- | ----------- | ---------- |
+| app/blog/[slug]/page.tsx | /blog/a     | \{slug:'a'} |
+| app/blog/[slug]/page.tsx | /blog/b     | \{slug:'b'} |
+| app/blog/[slug]/page.tsx | /blog/c     | \{slug:'c'} |
+
+# 빌드 시 동적 세그먼트 구현하기 with generateStaticParams
+
+generateStaticParams 함수는 Dynamic Segments와 함께 사용되며 런타임이 아닌 빌드 시점에 경로를 생성할 때 사용한다.
+
+SSG 방식으로 빌드 시 페이지를 미리 생성할 수 있다. 빌드 후 변경되지 않는 페이지에 사용하면 서버 사이드에서 api 요청 후 페이지를 만드는 과정을 줄일 수 있어 페이지 로딩 속도를 최적화할 수 있다.
+
+## 외부 API 사용 시
+
+``` tsx:app/blog/[slug]/page.tsx
+//외부에서 데이터를 가져올 경우
+export async function generateStaticParams() {
+  const posts = await fetch('https://.../posts').then((res) => res.json());
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+```
+
+## 간단한 테스트 용도
+
+``` tsx:app/blog/[slug]/page.tsx
+// 하드코딩
+export async function generateStaticParams() {
+    return [{ slug: "a" }, { slug: "b" }, { slug: "c" }];
+}
+```
+
+## slug 값 가져오기
+
+동적 세그먼트는 layout, page, route, generateMetadata 함수로 params prop으로 전달된다.
+
+### page 에서 가져오기
+
+```tsx:app/blog/[slug]/page.tsx
+export default function BlogPage({ params }: { params: { slug: string } }) {
+
+return <p>{params.slug}</p>;
+}
+```
+
+### layout에서 가져오기
+
+``` tsx:app/blog/page.tsx
+export default function BlogLayout({
+ children,
+ params,
+}: {
+ children: React.ReactNode;
+ params: { slug: string };
+}) {
+ return (
+  <>
+   <p>{params.slug}</p>
+   {children}
+  </>
+ );
+}
+```
+
+### route에서 가져오기
+
+생략
+
+### generateMetadata 함수에서 가져오기
+
+생략
+
+## 빌드하여 확인하기
+
+``` bash
+┌ ○ /                                      
+├ ● /blog/[slug]                           
+├   ├ /blog/a
+├   ├ /blog/b
+├   └ /blog/c
+└ ○ /favicon.ico 
+```
+
+npm run build로 빌드할 경우 위와 같이 경로가 생성된 것을 확인할 수 있다.
+
+## 빌드 시 생성되지 않은 /blog/d로 접근하면 어떻게 될까?
+
+결과적으로 params.slug 값을 가져오게 되고 서버사이드에서 페이지를 생성한다.
+
+그 이유는 generateStaticParams로 생성되지 않은 동적 세그먼트를 방문할 경우를 제어하는 옵션인 dynamicParams의 기본값이 true이기 때문이다.
+
+이 값을 false로 변경하면 생성되지 않은 동적 세그먼트는 404페이지를 반환한다. 그리고 미리 생성된 페이지만 반환할 수 있게된다.
+
+```tsx:app/blog/page.tsx
+export const dynamicParams = false
+```
+
+추가로 dynamic 옵션이 error, force-static일 경우 dynamicParams 옵션이 false가 된다.
+
+## Dynamic Segments 종류
+
+지금까지는 app/blog/[slug]/page.tsx 와 같은 Single Dynamic Segments를 다루었다. 만약 여러 개의 동적 세그먼트가 필요하다면 Catch-all Dynamic Segments 또는 Multiple Dynamic Segments를 활용하여야 한다.
+
+### Catch-all Segment
+
+대괄호를 씌우고 ...을 앞에 붙이면 여러 경로에 걸친 값들을 params에서 배열로 받을 수 있다.
+| Route                      | Example URL | params               |
+| --------------------------- | ----------- | -------------------- |
+| app/shop/[...slug]/page.tsx | /shop/a     | \{slug:['a']}         |
+| app/shop/[...slug]/page.tsx | /shop/a/b   | \{slug:['a','b']}     |
+| app/shop/[...slug]/page.tsx | /shop/a/b/c | \{slug:['a','b','c']} |
+
+```tsx:app/shop/[[...slug]]/page.tsx
+export function generateStaticParams() {
+ return [{ slug: ["a"] }, { slug: ["a", "b"] }, { slug: ["a", "b", "c"] }];
+}
+
+export default function ProductPage({
+ params,
+}: {
+ params: { slug: string[] };
+}) {
+ return (
+  <>
+   {params.slug.map((s, index) => {
+    return <p key={index}>{`상점 페이지 ${s}`}</p>;
+   })}
+  </>
+ );
+}
+```
+
+### Optional Catch-all Segments
+
+대괄호 두개를 씌우면 매개변수가 없는 것부터 매치가 된다.
+
+| Route                        | Example URL | params               |
+| ----------------------------- | ----------- | -------------------- |
+| app/shop/[[...slug]]/page.tsx | /shop       | \{}                   |
+| app/shop/[[...slug]]/page.tsx | /shop/a     | \{slug:['a']}         |
+| app/shop/[[...slug]]/page.tsx | /shop/a/b   | \{slug:['a','b']}     |
+| app/shop/[[...slug]]/page.tsx | /shop/a/b/c | \{slug:['a','b','c']} |
+
+```tsx:app/shop/[[...slug]]/page.tsx
+export function generateStaticParams() {
+ return [{ slug: ["a"] }, { slug: ["a", "b"] }, { slug: ["a", "b", "c"] }];
+}
+
+export default function ProductPage({
+ params,
+}: {
+ params: { slug: string[] };
+}) {
+ return (
+  <>
+   {params.slug.map((s, index) => {
+    return <p key={index}>{`상점 페이지 ${s}`}</p>;
+   })}
+  </>
+ );
+}
+```
+
+### Muliple Dynamic Segments
+
+Multiple Dynamic Segments란 여러 개의 동적 세그먼트를 각각의 파라미터로 받을 수 있다.
+| Route                                     | Example URL              | params                                 |
+| ------------------------------------------ | ------------------------ | -------------------------------------- |
+| app/products/[category]/[product]/page.tsx | /products/bag/chanel-bag | \{category:"bag", product:"chanel-bag"} |
+
+주의할 점은 레이아웃이나 페이지에서 상위의 파라미터는 가져올 수 있지만 자기자신보다 하위의 파라미터는 가져올 수 없다.
+| Route                                      | Example URL              | params                                 |
+| ------------------------------------------ | ------------------------ | -------------------------------------- |
+| app/products/[category]/page.tsx           | /products/bag            | \{category:"bag", product: undefined}   |
+| app/products/[category]/[product]/page.tsx | /products/bag/chanel-bag | \{category:"bag", product:"chanel-bag"} |
+
+Multiple Dynamic Segments의 파라미터는 Bottom up과 Top down 방식으로 생성할 수 있다.
+
+#### Bottom up 방식으로 파라미터 생성하기
+
+하위 페이지에서 상위 파라미터까지 한번에 생성하는 방법이다. [product]레벨의 page.tsx에서 category까지 생성한다.
+
+##### Bottom up 외부 API 사용 시
+
+``` tsx:app/products/[category]/[product]/page.tsx
+export async function generateStaticParams() {
+  const products = await fetch('https://.../products').then((res) =>
+    res.json(),
+  );
+
+  return products.map((product) => ({
+    category: product.category.slug,
+    product: product.id,
+  }));
+}
+
+export default function Page({
+  params,
+}: {
+  params: { category: string; product: string };
+}) {
+  // ...
+}
+```
+
+##### Bottom up 간단한 테스트 용도
+
+``` tsx:app/products/[category]/[product]/page.tsx
+export async function generateStaticParams() {
+ return [
+  { category: "bag", product: "1" },
+  { category: "hat", product: "2" },
+  { category: "bag", product: "3" },
+  { category: "hat", product: "4" },
+  { category: "clothes", product: "5" },
+ ];
+}
+
+export default function Page({
+  params,
+}: {
+  params: { category: string; product: string };
+}) {
+  // ...
+}
+```
+
+#### Top down 방식으로 파라미터 생성하기
+
+상위 세그먼트를 먼저 생성하고 각각 세그먼트에서 자신의 값으로 하위 세그먼트를 생성한다.
+
+##### Top down 외부 API 사용 시
+
+```tsx:app/products/[category]/layout.tsx
+// Generate segments for [category]
+export async function generateStaticParams() {
+  const products = await fetch('https://.../products').then((res) =>
+    res.json(),
+  );
+
+  return products.map((product) => ({
+    category: product.category.slug,
+  }));
+}
+
+export default function Layout({
+  params,
+}: {
+  params: { category: string };
+}) {
+  // ...
+}
+```
+
+이후 하위 페이지 generateStaticParams에서 상위 파라미터를 가져온 후  product 세그먼트를 생성한다.
+
+```tsx:app/products/[category]/[product]/page.tsx
+export async function generateStaticParams({
+  params: { category },
+}: {
+  params: { category: string };
+}) {
+  const products = await fetch(
+    `https://.../products?category=${category}`,
+  ).then((res) => res.json());
+
+  return products.map((product) => ({
+    product: product.id,
+  }));
+}
+
+export default function Page({ params }: { params: { category: string } }) {
+  // ...
+}
+```
+
+##### Top down 간단한 테스트 용도
+
+```tsx:app/products/[category]/layout.tsx
+export async function generateStaticParams() {
+ return [
+  { category: "bag" },
+  { category: "hat" },
+  { category: "clothes" },
+ ];
+}
+
+export default function Layout({
+  params,
+}: {
+  params: { category: string };
+}) {
+  // ...
+}
+```
+
+```tsx:app/products/[category]/[product]/page.tsx
+export async function generateStaticParams({
+  params: { category },
+}: {
+  params: { category: string };
+}) {
+if (category == "bag") return [{ product: "1" }, { product: "3" }];
+if (category == "hat") return [{ product: "2" }, { product: "4" }];
+else return [{ product: "5" }];
+}
+
+export default function Page({ params }: { params: { category: string } }) {
+  // ...
+}
+```
+
+#### 빌드 시 결과
+
+``` bash
+├ ○ /products                              
+├ ● /products/[category]
+├   ├ /products/bag
+├   ├ /products/hat
+├   └ /products/clothes
+├ ● /products/[category]/[product]
+├   ├ /products/bag/1
+├   ├ /products/bag/3
+├   ├ /products/hat/2
+├   ├ /products/hat/4
+├   └ /products/clothes/5
+```
+
+## Multi Dynamic Segments Top down으로 생성시 주의사항
+
+상위 세그먼트 generateStaticParams는 페이지가 아니라 레이아웃에서 구현해야 한다.
+
+[Next 13 - generateStaticParams not working with Multiple Dynamic Segments in a Route](https://github.com/vercel/next.js/issues/42840)
+
+추가로 레이아웃을 추가하였으면 꼭 children을 jsx에 추가해주어야 레이아웃 내부 페이지가 정상작동함
+
+## Static Site Generation (SSG)
+Static Site Generation은 빌드 시 미리 html 페이지를 생성하는 것이다.
+SSG를 구현하려면 generateStaticParams와 옵션을 통해 가능하다.
+
+fetch api를 사용할 경우 기본적으로 force-cache 옵션이고 특별히 no-store로 변경하지 않는 이상 generateStaticParams로 인해 빌드 시 페이지가 생성될 것이다.
+revalidate일 경우에도 빌드 시 페이지를 생성한다.
+
+```ts
+fetch(URL, { cache: 'force-cache' });
+fetch(URL, { cache: 'no-store' });
+fetch(URL, { next: { revalidate: 10 } })
+```
+
+## SSG 결과 확인하기
+
+.next/server/app/ 경로에 .html 파일로 생성되어 있으며 해당 경로로 요청이 될 경우 미리 생성된 페이지를 반환한다.
+

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "@/components/nav/ThemeSwitch";
 import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import { menus } from "@/const/menu";

@@ -3,7 +3,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
 import { allReviews } from "contentlayer/generated";
 import { ReviewCard } from "@/components/card/ReviewCard";
-import { MasonryLayout } from "../../components/layout/masonry/MasonryLayout";
+import { MasonryLayout } from "@/components/layout/masonry/MasonryLayout";
 import Link from "next/link";
 
 function getData() {

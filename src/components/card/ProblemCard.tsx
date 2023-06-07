@@ -1,8 +1,7 @@
 import { Problem } from ".contentlayer/generated";
-import Link from "next/link";
-import { Paragraph, SmallParagraph } from "../typo/paragraphs";
-import { IconRenderer } from "../icon/IconRenderer";
-import { H4 } from "../typo/heading";
+import { Paragraph, SmallParagraph } from "@/components/typo/paragraphs";
+import { IconRenderer } from "@/components/icon/IconRenderer";
+import { H4 } from "@/components/typo/heading";
 
 export default function DailyLogCard(problem: Problem) {
   const langs = problem.logs

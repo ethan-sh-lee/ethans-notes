@@ -1,6 +1,6 @@
 import { Review } from "contentlayer/generated";
-import { H6 } from "../typo/heading";
-import { Paragraph, XSParagraph } from "../typo/paragraphs";
+import { H6 } from "@/components/typo/heading";
+import { Paragraph, XSParagraph } from "@/components/typo/paragraphs";
 import { format, parseISO } from "date-fns";
 
 export const ReviewCard = (review: Review) => {
