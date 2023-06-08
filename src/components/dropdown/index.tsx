@@ -2,7 +2,17 @@
 
 import { useRef, useState } from "react";
 
-const Dropdown = ({ name, data, selected, handler }: any) => {
+const Dropdown = ({
+  name,
+  checkList,
+  selectedList,
+  handler,
+}: {
+  name: string;
+  checkList: string[];
+  selectedList: string[];
+  handler: Function;
+}) => {
   const [visibility, setVisibility] = useState(false);
 
   // 드랍다운 외 클릭 시 드랍다운 닫기
@@ -49,10 +59,10 @@ const Dropdown = ({ name, data, selected, handler }: any) => {
         }`}
       >
         <ul className="p-3 space-y-1 text-sm shadow-md text-gray-700 dark:text-gray-200">
-          {data.map((p: any) => {
-            const isSelected = selected.includes(p);
+          {checkList.map((p: string) => {
+            const isChecked = selectedList.includes(p);
             return (
-              <li key={p} onClick={() => handler(p)}>
+              <li key={p} onClick={(e) => handler(p)}>
                 <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                   <input
                     className="w-4 h-4 text-blue-600 bg-gray-100 
@@ -61,7 +71,7 @@ const Dropdown = ({ name, data, selected, handler }: any) => {
                       dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     type="checkbox"
                     readOnly
-                    checked={isSelected}
+                    checked={isChecked}
                   />
                   <label className="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                     {p}
