@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import { menus } from "@/const/menu";
 
-export default function Navbar() {
+const Navbar = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
@@ -58,4 +58,6 @@ export default function Navbar() {
       </div>
     </div>
   );
-}
+};
+
+export default Navbar;

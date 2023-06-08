@@ -1,9 +1,8 @@
 import { noteCategories } from "@/const/menu";
 import { allNotes } from "contentlayer/generated";
 import compareDesc from "date-fns/compareDesc";
-import { PageLayout } from "@/components/layout/PageLayout";
+import PageLayout from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
-import PostCard from "@/components/card/PostCard";
 import Link from "next/link";
 import PostDateCard from "@/components/card/PostDateCard";
 

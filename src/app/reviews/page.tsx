@@ -1,5 +1,5 @@
 import { compareDesc } from "date-fns";
-import { PageLayout } from "@/components/layout/PageLayout";
+import PageLayout from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
 import { allReviews } from "contentlayer/generated";
 import { ReviewCard } from "@/components/card/ReviewCard";

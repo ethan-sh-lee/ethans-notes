@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { allReviews } from "contentlayer/generated";
-import { ReviewLayout } from "@/components/layout/ReviewLayout";
+import ReviewLayout from "@/components/layout/ReviewLayout";
 
 type PageProps = {
   params: {

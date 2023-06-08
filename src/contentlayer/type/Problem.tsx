@@ -5,6 +5,7 @@ import {
 
 export const Problem = defineDocumentType(() => ({
   name: "Problem",
+  contentType: "mdx",
   filePathPattern: `problems/**/*.mdx`,
   fields: {
     title: {
@@ -52,6 +53,7 @@ export const Problem = defineDocumentType(() => ({
 
 const Log = defineNestedType(() => ({
   name: "Log",
+  contentType: "mdx",
   fields: {
     date: {
       type: "date",
@@ -89,6 +91,7 @@ const Log = defineNestedType(() => ({
 
 const Programmers = defineNestedType(() => ({
   name: "Programmers",
+  contentType: "mdx",
   fields: {
     level: {
       type: "enum",
@@ -100,6 +103,7 @@ const Programmers = defineNestedType(() => ({
 
 const BOJ = defineNestedType(() => ({
   name: "BOJ",
+  contentType: "mdx",
   fields: {
     level: {
       type: "enum",
@@ -143,6 +147,7 @@ const BOJ = defineNestedType(() => ({
 
 const CodeWars = defineNestedType(() => ({
   name: "CodeWars",
+  contentType: "mdx",
   fields: {
     level: {
       type: "enum",
@@ -154,6 +159,7 @@ const CodeWars = defineNestedType(() => ({
 
 const LeetCode = defineNestedType(() => ({
   name: "LeetCode",
+  contentType: "mdx",
   fields: {
     level: {
       type: "enum",

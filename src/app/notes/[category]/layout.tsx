@@ -6,10 +6,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CategoryLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const CategoryLayout = ({ children }: { children: React.ReactNode }) => {
   return children;
-}
+};
+
+export default CategoryLayout;

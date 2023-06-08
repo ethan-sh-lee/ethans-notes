@@ -1,7 +1,7 @@
 import { MainPageLayout } from "@/components/layout/MainPageLayout";
 import { H1 } from "@/components/typo/heading";
 
-export default async function Home() {
+const Home = () => {
   return (
     <MainPageLayout>
       <title>Ethan&#39;s Notes</title>
@@ -14,4 +14,5 @@ export default async function Home() {
       </div>
     </MainPageLayout>
   );
-}
+};
+export default Home;

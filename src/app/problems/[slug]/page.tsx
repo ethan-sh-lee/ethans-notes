@@ -14,7 +14,7 @@ export async function generateStaticParams(): Promise<PageProps["params"][]> {
   }));
 }
 
-const ReviewLayout = ({ params }: PageProps) => {
+const ProblemPage = ({ params }: PageProps) => {
   const problem = allProblems.find(({ slug }) => {
     return slug === params.slug;
   });
@@ -36,4 +36,4 @@ const ReviewLayout = ({ params }: PageProps) => {
   );
 };
 
-export default ReviewLayout;
+export default ProblemPage;

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-export default function Dropdown({ name, data, selected, handler }: any) {
+const Dropdown = ({ name, data, selected, handler }: any) => {
   const [visibility, setVisibility] = useState(false);
 
   // 드랍다운 외 클릭 시 드랍다운 닫기
@@ -12,7 +12,9 @@ export default function Dropdown({ name, data, selected, handler }: any) {
       setVisibility(false);
     }
   };
-  document.addEventListener("mousedown", closeDropdown);
+  if (typeof window !== "undefined") {
+    document.addEventListener("mousedown", closeDropdown);
+  }
   // 드랍다운 닫기
 
   return (
@@ -72,4 +74,6 @@ export default function Dropdown({ name, data, selected, handler }: any) {
       </div>
     </div>
   );
-}
+};
+
+export default Dropdown;

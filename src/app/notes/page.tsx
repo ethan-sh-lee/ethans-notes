@@ -1,13 +1,11 @@
-"use client";
-
 import { noteCategories } from "@/const/menu";
-import { PageLayout } from "@/components/layout/PageLayout";
+import PageLayout from "@/components/layout/PageLayout";
 import { PageHeading } from "@/components/typo/PageHeading";
 import { CategoryCard } from "@/components/card/CategoryCard";
 import { MasonryLayout } from "@/components/layout/masonry/MasonryLayout";
 import Link from "next/link";
 
-export default function Notes() {
+const Home = () => {
   return (
     <PageLayout>
       <PageHeading
@@ -24,4 +22,6 @@ export default function Notes() {
       </MasonryLayout>
     </PageLayout>
   );
-}
+};
+
+export default Home;

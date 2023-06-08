@@ -1,7 +1,7 @@
 import { Note, Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
-import { Comments } from "@/components/Comments";
+import Comments from "@/components/Comments";
 import { H2 } from "@/components/typo/heading";
 import { PostFooter } from "@/components/nav/PostFooter";
 

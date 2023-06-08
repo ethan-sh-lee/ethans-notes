@@ -3,18 +3,19 @@
 import CalendarHeatmap from "react-calendar-heatmap";
 import { Tooltip } from "react-tooltip";
 import "@/styles/calendar-heatmap.css";
-import { allProblems } from "contentlayer/generated";
 import { useTheme } from "next-themes";
 
 export type HeatmapDataType = {
   date: Date;
   count: number;
 };
-export default function CalendarHeatmapWrapper({
+const CalendarHeatmapWrapper = ({
+  allProblems,
   onClickHandler,
 }: {
+  allProblems: any;
   onClickHandler: any;
-}) {
+}) => {
   const { theme } = useTheme();
   const blockSize = 16;
 
@@ -24,7 +25,7 @@ export default function CalendarHeatmapWrapper({
         <CalendarHeatmap
           startDate={new Date("2023-01-01")}
           endDate={new Date("2023-12-31")}
-          values={getProblemsByDate()}
+          values={getProblemsByDate(allProblems)}
           gutterSize={2}
           showMonthLabels={true}
           classForValue={(value) => {
@@ -67,10 +68,9 @@ export default function CalendarHeatmapWrapper({
           onClick={(value) => onClickHandler(value?.date)}
         />
         <Tooltip id="tooltip" />
-
         <div className="flex justify-between items-center">
           <p className="text-xs  text-gray-700 dark:text-gray-400">
-            {`${getAllProblems()} problems in 2023`}
+            {`${getAllProblems(allProblems)} problems in 2023`}
           </p>
           <div className="flex gap-0.5 items-center">
             <p className="text-xs mr-0.5 text-gray-700 dark:text-gray-400">
@@ -121,12 +121,14 @@ export default function CalendarHeatmapWrapper({
       </div>
     </div>
   );
-}
+};
 
-function getProblemsByDate() {
+export default CalendarHeatmapWrapper;
+
+function getProblemsByDate(allProblems: any) {
   const map = new Map();
-  allProblems.forEach((value) => {
-    value.logs?.forEach((log) => {
+  allProblems.forEach((value: any) => {
+    value.logs?.forEach((log: any) => {
       var date = new Date(log.date).toISOString().slice(0, 10);
       if (map.has(date)) {
         var num = map.get(date);
@@ -145,9 +147,9 @@ function getProblemsByDate() {
   return result;
 }
 
-function getAllProblems() {
+function getAllProblems(allProblems: any) {
   var result = 0;
-  allProblems.forEach((p) => {
+  allProblems.forEach((p: any) => {
     result = result + p.logs?.length!;
   });
 

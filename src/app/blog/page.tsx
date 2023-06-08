@@ -1,7 +1,7 @@
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { PageHeading } from "@/components/typo/PageHeading";
-import { PageLayout } from "@/components/layout/PageLayout";
+import PageLayout from "@/components/layout/PageLayout";
 import Link from "next/link";
 import PostDateCard from "@/components/card/PostDateCard";
 
