@@ -7,9 +7,6 @@ module.exports = withContentlayer({
     GISCUS_REPO_ID: process.env.GISCUS_REPO_ID,
     GISCUS_CATEGORY_ID: process.env.GISCUS_CATEGORY_ID,
   },
-  experimental: {
-    appDir: true,
-  },
   images: {
     remotePatterns: [
       {
