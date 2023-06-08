@@ -5,9 +5,6 @@
   "scripts": {
     "dev": "contentlayer dev & next dev",
     "build": "contentlayer build && next build",
-    "build2": "next build",
-    "build3": "contentlayer build",
-    "clear": "contentlayer build --clearCache",
     "start": "next start",
     "lint": "next lint"
   },
