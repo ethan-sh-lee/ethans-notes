@@ -1,7 +1,6 @@
 "use client";
 
 import CalendarHeatmapWrapper from "@/components/CalendarHeatmapWrapper";
-import ProblemCard from "@/components/card/ProblemCard";
 import Dropdown from "@/components/dropdown";
 import useCheckBox from "@/hooks/useCheckBox";
 import { Problem } from "contentlayer/generated";
@@ -9,6 +8,7 @@ import { compareDesc } from "date-fns";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Tag } from "./tag";
+import { IconRenderer } from "./icon/IconRenderer";
 
 export const platformList = ["Programmers", "BOJ", "CodeWars", "LeetCode"];
 export const langList = ["cpp", "kotlin"];
@@ -60,12 +60,56 @@ const ProblemsTable = ({ problemsProp }: { problemsProp: Problem[] }) => {
           return <Tag clickable handler={toggle} name={name} key={index} />;
         })}
       </div>
-      <div className="pt-4 gap-2 grid grid-cols-1 md:grid-cols-2">
-        {problems.map((problem, index) => (
-          <Link key={index} href={problem.url}>
-            <ProblemCard {...problem} />
-          </Link>
-        ))}
+      <div className="realative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead>
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Problem
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Platform
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Difficulty
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Language
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Times
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {problems.map((problem, index) => (
+              <tr
+                key={index}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <Link href={problem.url}>{problem.title}</Link>
+                </th>
+                <td className="px-6 py-4">{problem.platform.type}</td>
+                <td className="px-6 py-4">{problem.platform.level}</td>
+                <td className="px-6 py-4 flex gap-1">
+                  {problem.logs
+                    ?.map((log) => log.lang)
+                    .filter(
+                      (value, index, array) => array.indexOf(value) === index
+                    )!
+                    .map((lang, index) => IconRenderer(lang, index))}
+                </td>
+                <td className="px-6 py-4">
+                  {problem.logs?.length.toString() + "회"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
