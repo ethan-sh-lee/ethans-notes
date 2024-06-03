@@ -4,6 +4,7 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import { Tooltip } from "react-tooltip";
 import "@/styles/calendar-heatmap.css";
 import { useTheme } from "next-themes";
+import { Problem } from "contentlayer/generated";
 
 export type HeatmapDataType = {
   date: Date;
@@ -13,18 +14,21 @@ const CalendarHeatmapWrapper = ({
   allProblems,
   onClickHandler,
 }: {
-  allProblems: any;
+  allProblems: Problem[];
   onClickHandler: any;
 }) => {
   const { theme } = useTheme();
   const blockSize = 16;
 
+  const now = new Date();
+  let date = new Date();
+  date.setFullYear(date.getFullYear() - 1);
   return (
     <div className="overflow-x-scroll">
       <div className="w-[900px] sm:w-[1000px] md:w-full">
         <CalendarHeatmap
-          startDate={new Date("2023-01-01")}
-          endDate={new Date("2023-12-31")}
+          startDate={date}
+          endDate={now}
           values={getProblemsByDate(allProblems)}
           gutterSize={2}
           showMonthLabels={true}
@@ -70,7 +74,10 @@ const CalendarHeatmapWrapper = ({
         <Tooltip id="tooltip" />
         <div className="flex justify-between items-center">
           <p className="text-xs  text-gray-700 dark:text-gray-400">
-            {`${getAllProblems(allProblems)} problems in 2023`}
+            {`problems that solved while one year : ${getAllProblems(
+              allProblems,
+              date
+            )}`}
           </p>
           <div className="flex gap-0.5 items-center">
             <p className="text-xs mr-0.5 text-gray-700 dark:text-gray-400">
@@ -147,10 +154,15 @@ function getProblemsByDate(allProblems: any) {
   return result;
 }
 
-function getAllProblems(allProblems: any) {
+function getAllProblems(allProblems: Problem[], start: Date) {
   var result = 0;
-  allProblems.forEach((p: any) => {
-    result = result + p.logs?.length!;
+  allProblems.forEach((p: Problem) => {
+    p.logs?.forEach((log) => {
+      const date = new Date(log.date);
+      if (start <= date) {
+        result++;
+      }
+    });
   });
 
   return result;
