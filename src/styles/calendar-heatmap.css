@@ -23,7 +23,7 @@
     fill: #eeeeee;
   }
   .react-calendar-heatmap .dark-color-empty {
-    fill: #eeeeee1a;
+    fill: #eeeeee2a;
   }
   
   .react-calendar-heatmap .color-filled {
@@ -56,21 +56,21 @@
 
 
   .react-calendar-heatmap .dark-color-github-1 {
-    fill: #0b132b;
+    fill: #22577a;
   }
 
   .react-calendar-heatmap .dark-color-github-2 {
-    fill: #1c2541;
+    fill: #38a3a5;
   }
  
   .react-calendar-heatmap .dark-color-github-3 {
-    fill: #3a506b;
+    fill: #57cc99;
   }
 
     .react-calendar-heatmap .dark-color-github-4 {
-    fill: #5bc0be;
+    fill: #80ed99;
   }
 
   .react-calendar-heatmap .dark-color-github-5 {
-    fill: #6fffe9;
+    fill: #c7f9cc;
   }
