@@ -32,4 +32,6 @@ export const GreenParagraph = ({
   children,
 }: {
   children: string | number | undefined;
-}) => <p className="text-green-600 dark:text-red-500 font-bold">{children}</p>;
+}) => (
+  <p className="text-green-600 dark:text-green-500 font-bold">{children}</p>
+);
