@@ -26,7 +26,7 @@
 다이어그램 생성을 위한 [rehype-mermaidjs](https://github.com/remcohaszing/rehype-mermaidjs)의 종속성인 playwrite를 추가해야함
 
 ```bash
-npx playwright install --with-deps chromium
+npx playwright-core install --with-deps chromium
 ```
 
 ## Contents Form
