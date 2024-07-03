@@ -1,10 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import ThemeSwitch from "@/components/nav/ThemeSwitch";
+import ThemeSwitch from "@/components/nav/theme-switch";
 import { useState } from "react";
 import { Divide as Hamburger } from "hamburger-react";
-import { menus } from "@/const/menu";
+
+type Menu = {
+  title: string;
+  href: string;
+};
+
+export const menus: Menu[] = [
+  { title: "Blog", href: "/blog" },
+  { title: "Tags", href: "/tags" },
+  //{ title: "Problems", href: "/problems" },
+];
 
 const Navbar = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);

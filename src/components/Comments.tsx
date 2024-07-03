@@ -9,7 +9,7 @@ const Comments = () => {
   return (
     <Giscus
       id="comments"
-      repo={"sunho-lee/ethans-notes"}
+      repo={"ethan-sh-lee/ethans-notes"}
       repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID!}
       category="Announcements"
       categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID}

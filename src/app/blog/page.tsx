@@ -1,30 +1,29 @@
-import { allPosts } from "contentlayer/generated";
-import { compareDesc } from "date-fns";
-import { PageHeading } from "@/components/typo/PageHeading";
-import PageLayout from "@/components/layout/PageLayout";
-import Link from "next/link";
-import PostDateCard from "@/components/card/PostDateCard";
+import PostCard from "@/components/post-card";
+import { PageHeading } from "@/components/page-heading";
+import { posts } from "#site/content";
+import { sortPosts } from "@/lib/utils";
 
-function getData() {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
-  });
-  return posts;
-}
-export default function Blog() {
-  const posts = getData();
+export default async function Blog() {
+  const sortedPosts = sortPosts(posts.filter((post) => post.isPublished));
+
   return (
-    <PageLayout>
+    <div className="py-4 mx-auto max-w-4xl">
       <PageHeading
         head="블로그"
-        summary="개발, 기술, 스타트업, 기업문화, 제품에 대한 나의 생각을 포스팅합니다."
+        summary="알고리즘, 웹개발 등을 포스팅합니다."
       />
       <div className="mt-4" />
-      {posts.map((post, index) => (
-        <Link key={index} href={post.url.replace("/posts", "")}>
-          <PostDateCard {...post} />
-        </Link>
-      ))}
-    </PageLayout>
+      {sortedPosts?.length > 0 ? (
+        <ul className="flex flex-col">
+          {sortedPosts.map((post) => (
+            <li className="py-2" key={post.slug}>
+              <PostCard {...post} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Nothing to see here</p>
+      )}
+    </div>
   );
 }
