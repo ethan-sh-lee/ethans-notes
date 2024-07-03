@@ -9,8 +9,6 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    GISCUS_REPO_USERNAME: process.env.GISCUS_REPO_USERNAME,
-    GISCUS_REPO_NAME: process.env.GISCUS_REPO_NAME,
     GISCUS_REPO_ID: process.env.GISCUS_REPO_ID,
     GISCUS_CATEGORY_ID: process.env.GISCUS_CATEGORY_ID,
   },
