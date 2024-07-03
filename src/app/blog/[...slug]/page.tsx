@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { posts } from "#site/content";
 import { MDXContent } from "@/components/mdx-components";
-import Comments from "@/components/Comments";
+import Comments from "@/components/comments";
 
 type PageProps = {
   params: {
