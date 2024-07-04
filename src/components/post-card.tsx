@@ -1,14 +1,20 @@
 import { TypographyH4, TypographyMuted } from "@/components/typograhpy";
-import { Post } from "#site/content";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+
+type PostCardProps = {
+  slug: string;
+  title: string;
+  description?: string;
+  publishedAt: Date;
+};
 
 export default function PostCard({
   slug,
   title,
   description,
   publishedAt,
-}: Post) {
+}: PostCardProps) {
   const blogLink = "/" + slug;
 
   return (
@@ -29,7 +35,9 @@ export default function PostCard({
       <TypographyMuted>{description ? description : ""}</TypographyMuted>
       <div className="pt-2 flex justify-between items-center">
         <div className="text-sm sm:text-base font-medium flex items-center gap-1">
-          <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
+          <time dateTime={publishedAt.toUTCString()}>
+            {formatDate(publishedAt.toUTCString())}
+          </time>
         </div>
         <Link href={blogLink} className="text-sm">
           보러가기 →

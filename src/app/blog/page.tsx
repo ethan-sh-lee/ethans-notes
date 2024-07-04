@@ -17,7 +17,12 @@ export default async function Blog() {
         <ul className="flex flex-col">
           {sortedPosts.map((post) => (
             <li className="py-2" key={post.slug}>
-              <PostCard {...post} />
+              <PostCard
+                slug={post.slug}
+                title={post.title}
+                description={post.description}
+                publishedAt={new Date(post.publishedAt)}
+              />
             </li>
           ))}
         </ul>

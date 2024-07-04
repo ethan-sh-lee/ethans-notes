@@ -1,12 +1,18 @@
 import { ReactNode } from "react";
 
+export const HeadTypography = ({ children }: { children: ReactNode }) => (
+  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-black dark:text-white text-balance">
+    {children}
+  </h1>
+);
+
 export const TypographyH1 = ({ children }: { children: ReactNode }) => (
   <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl dark:text-white">
     {children}
   </h1>
 );
 export const TypographyH2 = ({ children }: { children: ReactNode }) => (
-  <h1 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 dark:text-white">
+  <h1 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0 dark:text-white">
     {children}
   </h1>
 );
@@ -33,12 +39,4 @@ export const TypographyLarge = ({ children }: { children: ReactNode }) => (
 
 export const TypographyMuted = ({ children }: { children: ReactNode }) => (
   <p className="text-sm text-gray-500 dark:text-gray-400">{children}</p>
-);
-
-export const RedParagraph = ({ children }: { children: ReactNode }) => (
-  <p className="text-red-600 dark:text-red-500 font-bold">{children}</p>
-);
-
-export const GreenParagraph = ({ children }: { children: ReactNode }) => (
-  <p className="text-green-600 dark:text-green-500 font-bold">{children}</p>
 );
