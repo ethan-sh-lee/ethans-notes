@@ -4,14 +4,7 @@ import { posts } from "#site/content";
 import { sortPosts } from "@/lib/utils";
 
 export default async function Blog() {
-  const sortedPosts = sortPosts(
-    posts.filter((post) => {
-      console.log(
-        "post slug : " + post.slug + "isPbulished : " + post.isPublished
-      );
-      return post.isPublished;
-    })
-  );
+  const sortedPosts = sortPosts(posts.filter((post) => post.isPublished));
 
   return (
     <div className="py-4 mx-auto max-w-4xl">
