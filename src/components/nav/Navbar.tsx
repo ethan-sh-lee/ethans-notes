@@ -16,7 +16,7 @@ export const menus: Menu[] = [
   //{ title: "Problems", href: "/problems" },
 ];
 
-const Navbar = () => {
+export default function Navbar() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
@@ -68,6 +68,4 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}

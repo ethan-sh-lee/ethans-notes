@@ -3,7 +3,7 @@
 import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 
-const Comments = () => {
+export default function Comments() {
   const { theme } = useTheme();
 
   return (
@@ -22,6 +22,4 @@ const Comments = () => {
       loading="lazy"
     />
   );
-};
-
-export default Comments;
+}
