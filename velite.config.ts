@@ -21,6 +21,7 @@ const posts = defineCollection({
       description: s.string().max(999).optional(),
       publishedAt: s.isodate(),
       isPublished: s.boolean().default(true),
+      tags: s.array(s.string()).optional(),
       content: s.mdx(),
     })
     .transform(computedFields),

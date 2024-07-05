@@ -2,10 +2,12 @@
 
 export const Tag = ({
   name,
+  count,
   handler = () => {},
   clickable = false,
 }: {
   name: string;
+  count?: number;
   handler?: Function;
   clickable?: boolean;
 }) => {
@@ -14,11 +16,11 @@ export const Tag = ({
       onClick={(e) => handler(name)}
       className={`${
         clickable
-          ? "cursor-pointer text-xs uppercase font-bold tracking-wider bg-gray-300 text-gray-600 dark:text-gray-300 dark:bg-gray-600  inline-block px-2 py-1 rounded"
-          : "text-xs uppercase font-bold tracking-wider bg-gray-300 text-gray-600 dark:text-gray-300 dark:bg-gray-600  inline-block px-2 py-1 rounded"
+          ? "cursor-pointer text-xs uppercase font-semibold bg-gray-100 text-gray-600 dark:text-gray-100 dark:bg-gray-500  inline-block px-3 py-1 rounded-full"
+          : "text-xs uppercase font-semibold bg-gray-100 text-gray-600 dark:text-gray-100 dark:bg-gray-500  inline-block px-3 py-1 rounded-full"
       }`}
     >
-      {name}
+      {name} {count ? `(${count})` : null}
     </span>
   );
 };

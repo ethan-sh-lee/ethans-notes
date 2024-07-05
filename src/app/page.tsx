@@ -44,6 +44,7 @@ const Home = () => {
                     title={post.title}
                     description={post.description}
                     publishedAt={new Date(post.publishedAt)}
+                    tags={post.tags}
                   />
                 </li>
               )
