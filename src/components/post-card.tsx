@@ -1,7 +1,7 @@
 import { TypographyH4, TypographyMuted } from "@/components/typograhpy";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
-import { Tag } from "@/components/tag";
+import Tag from "@/components/tag";
 
 type PostCardProps = {
   slug: string;

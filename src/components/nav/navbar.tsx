@@ -12,7 +12,7 @@ type Menu = {
 
 export const menus: Menu[] = [
   { title: "Blog", href: "/blog" },
-  { title: "Tags", href: "/tags" },
+  //{ title: "Tags", href: "/tags" },
   //{ title: "Problems", href: "/problems" },
 ];
 

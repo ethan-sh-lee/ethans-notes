@@ -1,20 +1,37 @@
-import PostCard from "@/components/post-card";
-import { PageHeading } from "@/components/page-heading";
 import { posts } from "#site/content";
-import { getAllTags, sortPosts, sortTagsByCount } from "@/lib/utils";
+import { PageHeading } from "@/components/page-heading";
+import PostCard from "@/components/post-card";
 import Tag from "@/components/tag";
+import {
+  getAllTags,
+  getPostsByTag,
+  sortPosts,
+  sortTagsByCount,
+} from "@/lib/utils";
 
-export default async function Blog() {
-  const sortedPosts = sortPosts(posts.filter((post) => post.isPublished));
+type TagPageProps = {
+  params: {
+    tag: string;
+  };
+};
+
+export const generateStaticParams = () => {
+  const tags = getAllTags(posts);
+  const paths = Object.keys(tags).map((tag) => ({ tag: tag }));
+  return paths;
+};
+
+export default async function TagPage({ params }: TagPageProps) {
+  const { tag } = params;
+
+  const postsByTag = getPostsByTag(posts, tag);
+  const sortedPosts = sortPosts(postsByTag.filter((post) => post.isPublished));
   const tags = getAllTags(posts);
   const sortedTags = sortTagsByCount(tags);
 
   return (
     <div className="py-4 mx-auto max-w-4xl">
-      <PageHeading
-        head="블로그"
-        summary="알고리즘, 웹개발 등을 포스팅합니다."
-      />
+      <PageHeading head={tag.toUpperCase()} />
       <div className="mt-4" />
       <hr />
       <div className="grid grid-cols-12 gap-3">
@@ -39,8 +56,8 @@ export default async function Blog() {
         </div>
         <div className="col-span-12 row-start-3 h-fit sm:col-span-4 sm:col-start-9 sm:row-start-1">
           <div className="flex flex-wrap gap-2 mt-6">
-            {sortedTags?.map((tag) => (
-              <Tag name={tag} key={tag} count={tags[tag]} />
+            {sortedTags?.map((t) => (
+              <Tag name={t} key={t} count={tags[t]} isCurrent={t === tag} />
             ))}
           </div>
         </div>
