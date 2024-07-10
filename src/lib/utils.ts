@@ -1,4 +1,6 @@
 import { Post } from "#site/content";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function formatDate(input: string | number): string {
   const date = new Date(input);
@@ -39,4 +41,8 @@ export function getPostsByTag(posts: Array<Post>, tag: string) {
     if (!post.tags) return false;
     return post.tags.includes(tag);
   });
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
 }
