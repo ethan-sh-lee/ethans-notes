@@ -1,6 +1,13 @@
 .code-line{
 	font-size: 0.7rem;
-  }
+	font-family:"JetBrainsMono";
+}
+
+@font-face { /* 젯브레인모노 폰트 적용 */
+	font-family: "JetBrainsMono";
+	src: url("../../public/static/font/JetBrainsMono-VariableFont_wght.ttf") format("truetype");
+	font-weight: normal;
+} /* 이후 "JetBrainsMono"로 폰트 적용 가능 */
 
 @media (min-width: 640px) {
     .code-line{
