@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import "@/styles/prism-vsc-dark-plus.css";
 import "@/styles/rehype-code-titles.css";
 import "@/styles/rehype-mermaidjs.css";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Ethan's notes",
@@ -16,6 +17,7 @@ const font = Noto_Sans_KR({
   weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
+  variable: "--noto_sans_kr",
 });
 
 type RootLayoutProps = {
@@ -24,8 +26,13 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html className={font.className} lang="ko" suppressHydrationWarning>
-      <body className="px-3 pt-2 dark:bg-black dark:text-white">
+    <html lang="ko" suppressHydrationWarning>
+      <body
+        className={cn(
+          "px-3 pt-2 min-h-screen bg-background font-sans antialiased",
+          font.variable
+        )}
+      >
         <BlogThemeProvider>
           <Navbar />
           {children}

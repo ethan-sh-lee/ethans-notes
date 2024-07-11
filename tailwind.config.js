@@ -8,7 +8,11 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+
   theme: {
+    fontFamily: {
+      sans: ["var(--noto_sans_kr)"],
+    },
     container: {
       center: true,
       padding: "2rem",
