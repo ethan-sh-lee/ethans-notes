@@ -3,9 +3,10 @@
  * https://velite.js.org/guide/using-mdx
  */
 import * as runtime from "react/jsx-runtime";
-
+import { CodeBlocksWithTabs } from "@/components/code-blocks-with-tabs";
 const sharedComponents = {
   // Add your global components here for MDX
+  CodeBlocksWithTabs,
 };
 
 const useMDXComponent = (code: string) => {
